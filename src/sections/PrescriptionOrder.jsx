@@ -16,9 +16,27 @@ export default function PrescriptionOrder() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
   }
 
+  const validateAndSetFile = (selectedFile) => {
+    if (!selectedFile) return
+    const fileType = selectedFile.type.toLowerCase()
+    const fileName = selectedFile.name.toLowerCase()
+    
+    const isImage = fileType.startsWith('image/') || /\.(jpg|jpeg|png|gif|webp|heic)$/i.test(fileName)
+    const isPdf = fileType === 'application/pdf' || fileName.endsWith('.pdf')
+    
+    if (isImage || isPdf) {
+      setFile(selectedFile)
+    } else {
+      alert("Invalid file format. Please upload only prescription images (JPG, PNG, WebP) or PDF documents.")
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
+    }
+  }
+
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0])
+      validateAndSetFile(e.target.files[0])
     }
   }
 
@@ -39,7 +57,7 @@ export default function PrescriptionOrder() {
     e.stopPropagation()
     setIsDragOver(false)
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      setFile(e.dataTransfer.files[0])
+      validateAndSetFile(e.dataTransfer.files[0])
     }
   }
 
