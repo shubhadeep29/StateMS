@@ -3,16 +3,44 @@ import { useState, useEffect } from 'react'
 export default function Nav() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isShrunk, setIsShrunk] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
+      // Shrink header on scroll
       if (window.scrollY > 50) {
         setIsShrunk(true)
       } else {
         setIsShrunk(false)
       }
+
+      // Check bottom scroll limit first (Contact section)
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+        setActiveSection('contact')
+        return
+      }
+
+      // Find which section is currently active
+      const sectionIds = ['home', 'about', 'services', 'order', 'doctors', 'faq', 'contact']
+      const scrollPosition = window.scrollY + 100 // Header offset buffer
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (el) {
+          const top = el.offsetTop
+          const height = el.offsetHeight
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(id)
+            break
+          }
+        }
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
+    // Run initial check
+    handleScroll()
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -35,6 +63,9 @@ export default function Nav() {
       const headerOffset = 64
       const elementPosition = targetElement.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+      // Update active section state immediately on click
+      setActiveSection(id.replace('#', ''))
 
       window.scrollTo({
         top: offsetPosition,
@@ -73,13 +104,13 @@ export default function Nav() {
         </a>
 
         <nav className={`nav ${isMobileOpen ? 'active' : ''}`} id="mainNavigation" aria-label="Main Navigation">
-          <a href="#home" onClick={(e) => handleLinkClick(e, '#home')}>Home</a>
-          <a href="#about" onClick={(e) => handleLinkClick(e, '#about')}>About</a>
-          <a href="#services" onClick={(e) => handleLinkClick(e, '#services')}>Services</a>
-          <a href="#order" onClick={(e) => handleLinkClick(e, '#order')}>Order Online</a>
-          <a href="#doctors" onClick={(e) => handleLinkClick(e, '#doctors')}>Doctor Schedule</a>
-          <a href="#faq" onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a>
-          <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')}>Contact</a>
+          <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>Home</a>
+          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>About</a>
+          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>Services</a>
+          <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>Order Online</a>
+          <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>Doctor Schedule</a>
+          <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a>
+          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>Contact</a>
         </nav>
 
         <div className="header-actions">

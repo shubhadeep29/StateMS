@@ -326,6 +326,9 @@ a {
 .nav a:hover { color: var(--primary); }
 .nav a:hover::after { width: 100%; }
 
+.nav a.active { color: var(--primary); }
+.nav a.active::after { width: 100%; }
+
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;
