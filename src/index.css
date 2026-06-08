@@ -610,18 +610,18 @@ section {
 }
 
 .floating-card {
-    position: absolute;
-    background: white;
     border: 1px solid var(--border-color-glow);
-    padding: 1.15rem 1.65rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
-    display: flex;
+    background: #fff;
     align-items: center;
     gap: 1rem;
-    bottom: -16px;
+    padding: 00.5rem 0.5rem;
+    animation: 5s ease-in-out infinite alternate float-slow;
+    display: flex;
+    position: absolute;
+    bottom: -10px;
     right: -16px;
-    animation: float-slow 5s ease-in-out infinite alternate;
 }
 
 @keyframes float-slow {
