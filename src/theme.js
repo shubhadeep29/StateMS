@@ -1,16 +1,16 @@
 import { createTheme } from '@mui/material/styles'
 
 const tokens = {
-  primary: '#09524B', // Teal primary
-  primaryLight: '#1ab19e',
-  primaryDark: '#05312d',
-  secondary: '#0F141F', // Dark navy
-  accent: '#F25A1A', // Accent orange
-  bg: '#f8fbfb', // Pale background
+  primary: '#0F4C81', // Royal Blue primary
+  primaryLight: '#2563EB', // Vibrant Blue
+  primaryDark: '#0B2D4D', // Deep Navy Blue
+  secondary: '#0B0F19', // Dark Slate/Black
+  accent: '#FF6D00', // Vibrant Orange
+  bg: '#f8fafc', // Slate tint background
   bgCard: 'rgba(255, 255, 255, 0.82)',
-  textMain: '#3d5360',
-  textDark: '#0d1f2d',
-  textLight: '#6b8590',
+  textMain: '#334155',
+  textDark: '#0f172a',
+  textLight: '#64748b',
   success: '#1b8045',
 }
 
