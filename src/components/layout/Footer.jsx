@@ -22,7 +22,7 @@ export default function Footer() {
             <img 
               src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
               alt="M/S State Medicine Shop Logo" 
-              style={{ width: '40px', height: '40px', objectFit: 'contain', filter: 'brightness(0) invert(1)', marginRight: '0.45rem' }}
+              style={{ width: '40px', height: '40px', objectFit: 'contain', marginRight: '0.45rem' }}
             />
             <div className="logo-text">
               <span className="logo-title">STATE</span>
