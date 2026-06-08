@@ -61,7 +61,11 @@ export default function Nav() {
         }}
       >
         <a href="#" className="logo" id="logoLink" onClick={(e) => handleLinkClick(e, '#home')}>
-          <i className="fa-solid fa-prescription-bottle-medical logo-icon"></i>
+          <img 
+            src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
+            alt="M/S State Medicine Shop Logo" 
+            style={{ width: '44px', height: '44px', objectFit: 'contain', marginRight: '0.25rem' }}
+          />
           <div className="logo-text">
             <span className="logo-title">M/S STATE</span>
             <span className="logo-subtitle">MEDICINE SHOP</span>

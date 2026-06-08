@@ -19,7 +19,11 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-col brand-col">
           <a href="#" className="logo footer-logo" onClick={(e) => handleLinkClick(e, '#home')}>
-            <i className="fa-solid fa-prescription-bottle-medical logo-icon" style={{ color: 'white' }}></i>
+            <img 
+              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
+              alt="M/S State Medicine Shop Logo" 
+              style={{ width: '40px', height: '40px', objectFit: 'contain', filter: 'brightness(0) invert(1)', marginRight: '0.45rem' }}
+            />
             <div className="logo-text">
               <span className="logo-title">STATE</span>
               <span className="logo-subtitle" style={{ color: 'var(--primary-light)' }}>MEDICINE SHOP</span>
