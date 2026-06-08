@@ -4,6 +4,7 @@ export default function Nav() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isShrunk, setIsShrunk] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const [scrollProgress, setScrollProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,15 @@ export default function Nav() {
         setIsShrunk(true)
       } else {
         setIsShrunk(false)
+      }
+
+      // Calculate scroll progress percentage
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight
+      if (totalScroll > 0) {
+        const scrolled = (window.scrollY / totalScroll) * 100
+        setScrollProgress(scrolled)
+      } else {
+        setScrollProgress(0)
       }
 
       // Check bottom scroll limit first (Contact section)
@@ -75,60 +85,75 @@ export default function Nav() {
   }
 
   return (
-    <header 
-      className="header" 
-      style={{
-        backgroundColor: isShrunk ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
-        boxShadow: isShrunk ? 'var(--shadow-sm)' : 'none',
-        borderBottom: '1px solid var(--border-color)',
-        transition: 'all 0.3s ease'
-      }}
-    >
+    <>
       <div 
-        className="container header-content" 
+        className="scroll-progress-bar"
         style={{
-          height: isShrunk ? '64px' : '84px',
-          transition: 'height 0.3s ease'
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          height: '4px',
+          width: `${scrollProgress}%`,
+          backgroundColor: 'var(--accent)',
+          zIndex: 1005,
+          transition: 'width 0.05s ease-out'
+        }}
+      />
+      <header 
+        className="header" 
+        style={{
+          backgroundColor: isShrunk ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
+          boxShadow: isShrunk ? 'var(--shadow-sm)' : 'none',
+          borderBottom: '1px solid var(--border-color)',
+          transition: 'all 0.3s ease'
         }}
       >
-        <a href="#" className="logo" id="logoLink" onClick={(e) => handleLinkClick(e, '#home')}>
-          <img 
-            src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
-            alt="M/S State Medicine Shop Logo" 
-            style={{ width: '44px', height: '44px', objectFit: 'contain', marginRight: '0.25rem' }}
-          />
-          <div className="logo-text">
-            <span className="logo-title">M/S STATE</span>
-            <span className="logo-subtitle">MEDICINE SHOP</span>
-          </div>
-        </a>
-
-        <nav className={`nav ${isMobileOpen ? 'active' : ''}`} id="mainNavigation" aria-label="Main Navigation">
-          <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>Home</a>
-          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>About</a>
-          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>Services</a>
-          <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>Order Online</a>
-          <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>Doctor Schedule</a>
-          <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a>
-          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>Contact</a>
-        </nav>
-
-        <div className="header-actions">
-          <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn">
-            <i className="fa-solid fa-phone"></i> Call Pharmacy
-          </a>
-        </div>
-
-        <button 
-          className="mobile-menu-btn" 
-          id="mobileMenuBtn" 
-          aria-label="Toggle menu" 
-          aria-expanded={isMobileOpen}
-          onClick={toggleMobileMenu}
+        <div 
+          className="container header-content" 
+          style={{
+            height: isShrunk ? '64px' : '84px',
+            transition: 'height 0.3s ease'
+          }}
         >
-          <i className={`fa-solid ${isMobileOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
-        </button>
-      </div>
-    </header>
+          <a href="#" className="logo" id="logoLink" onClick={(e) => handleLinkClick(e, '#home')}>
+            <img 
+              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
+              alt="M/S State Medicine Shop Logo" 
+              style={{ width: '44px', height: '44px', objectFit: 'contain', marginRight: '0.25rem' }}
+            />
+            <div className="logo-text">
+              <span className="logo-title">M/S STATE</span>
+              <span className="logo-subtitle">MEDICINE SHOP</span>
+            </div>
+          </a>
+
+          <nav className={`nav ${isMobileOpen ? 'active' : ''}`} id="mainNavigation" aria-label="Main Navigation">
+            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>Home</a>
+            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>About</a>
+            <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>Services</a>
+            <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>Order Online</a>
+            <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>Doctor Schedule</a>
+            <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a>
+            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>Contact</a>
+          </nav>
+
+          <div className="header-actions">
+            <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn">
+              <i className="fa-solid fa-phone"></i> Call Pharmacy
+            </a>
+          </div>
+
+          <button 
+            className="mobile-menu-btn" 
+            id="mobileMenuBtn" 
+            aria-label="Toggle menu" 
+            aria-expanded={isMobileOpen}
+            onClick={toggleMobileMenu}
+          >
+            <i className={`fa-solid ${isMobileOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+          </button>
+        </div>
+      </header>
+    </>
   )
 }
