@@ -543,8 +543,8 @@ section {
 }
 
 .trust-item i {
-    color: var(--success);
-    background: var(--success-bg);
+    color: var(--accent);
+    background: var(--accent-light);
     width: 28px;
     height: 28px;
     border-radius: 50%;
@@ -843,7 +843,7 @@ section {
 }
 
 .service-card-list i {
-    color: var(--success);
+    color: var(--accent);
     font-size: 1.05rem;
     margin-top: 2px;
     flex-shrink: 0;
@@ -1191,7 +1191,7 @@ section {
     align-items: center;
     gap: 0.4rem;
     align-self: flex-start;
-    color: var(--success);
+    color: var(--accent);
     font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
