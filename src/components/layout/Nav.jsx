@@ -92,11 +92,14 @@ export default function Nav() {
           position: 'fixed',
           top: 0,
           left: 0,
+          width: '100%',
           height: '4px',
-          width: `${scrollProgress}%`,
           backgroundColor: 'var(--accent)',
           zIndex: 1005,
-          transition: 'width 0.05s ease-out'
+          transform: `scaleX(${scrollProgress / 100})`,
+          transformOrigin: 'left',
+          willChange: 'transform',
+          transition: 'transform 0.1s cubic-bezier(0.1, 0.8, 0.3, 1)'
         }}
       />
       <header 
