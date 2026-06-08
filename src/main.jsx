@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react'
 import './index.css'
 import App from './App.jsx'
 
-gsap.registerPlugin(ScrollTrigger, useGSAP)
+gsap.registerPlugin(ScrollTrigger)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
