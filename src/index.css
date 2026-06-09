@@ -1553,6 +1553,10 @@ section > .container {
     font-size: 0.86rem;
 }
 
+.footer-portfolio-link:hover {
+    color: white !important;
+}
+
 /* ===== FLOATING WHATSAPP ===== */
 .floating-whatsapp {
     position: fixed;

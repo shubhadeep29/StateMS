@@ -81,8 +81,19 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <div className="container text-center">
+        <div className="container text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
           <p>{t('footer.copyright')}</p>
+          <p style={{ fontSize: '0.84rem', color: '#6b8296' }}>
+            {t('language') === 'bn' ? (
+              <>
+                ডিজাইন ও সযত্নে তৈরি ❤️ সহ <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
+              </>
+            ) : (
+              <>
+                Handcrafted with ❤️ by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
+              </>
+            )}
+          </p>
         </div>
       </div>
     </footer>
