@@ -59,7 +59,7 @@ export default function About() {
   }, { scope: sectionRef })
 
   return (
-    <section id="about" ref={sectionRef} className="about bg-teal-light bg-grid-pattern">
+    <section id="about" ref={sectionRef} className="about bg-teal-light">
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-1"></div>
 

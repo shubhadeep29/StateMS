@@ -19,7 +19,7 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="bg-teal-light bg-grid-pattern">
+    <section id="faq" className="bg-teal-light">
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-3" style={{ top: '20%', left: '10%' }}></div>
 

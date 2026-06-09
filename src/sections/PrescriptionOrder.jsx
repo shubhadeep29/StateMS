@@ -94,7 +94,7 @@ export default function PrescriptionOrder() {
   const isPdf = file && file.type.includes('pdf')
 
   return (
-    <section id="order" className="bg-teal-light bg-medical-pattern">
+    <section id="order" className="bg-teal-light">
       {/* Floating background icon */}
       <div className="bg-floating-icon icon-4"><i className="fa-solid fa-notes-medical"></i></div>
 
