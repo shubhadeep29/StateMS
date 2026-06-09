@@ -20,6 +20,11 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero">
+      {/* Floating background decorations */}
+      <div className="bg-floating-icon icon-1"><i className="fa-solid fa-plus"></i></div>
+      <div className="bg-floating-icon icon-2"><i className="fa-solid fa-prescription-bottle-medical"></i></div>
+      <div className="bg-floating-icon icon-3"><i className="fa-solid fa-heart-pulse"></i></div>
+
       <div className="container hero-container">
         <div className="hero-text">
           <div className="hero-badge">

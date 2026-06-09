@@ -59,7 +59,10 @@ export default function About() {
   }, { scope: sectionRef })
 
   return (
-    <section id="about" ref={sectionRef} className="about bg-teal-light">
+    <section id="about" ref={sectionRef} className="about bg-teal-light bg-grid-pattern">
+      {/* Blurred background orb */}
+      <div className="bg-blur-orb orb-1"></div>
+
       <div className="container about-container">
         <div className="about-image-wrapper gsap-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ position: 'relative', width: '100%' }}>

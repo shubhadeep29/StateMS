@@ -46,7 +46,10 @@ export default function Services() {
   }
 
   return (
-    <section id="services" ref={sectionRef} className="services">
+    <section id="services" ref={sectionRef} className="services bg-grid-pattern">
+      {/* Blurred background orb */}
+      <div className="bg-blur-orb orb-2"></div>
+
       <div className="container">
         <div className="section-header gsap-reveal">
           <div className="section-eyebrow"><i className="fa-solid fa-heart-pulse"></i> {t('services.eyebrow')}</div>

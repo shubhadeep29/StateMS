@@ -62,7 +62,10 @@ export default function Doctors() {
   ]
 
   return (
-    <section id="doctors">
+    <section id="doctors" className="bg-grid-pattern">
+      {/* Floating background icon */}
+      <div className="bg-floating-icon icon-5"><i className="fa-solid fa-stethoscope"></i></div>
+
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow"><i className="fa-solid fa-user-doctor"></i> {t('doctors.eyebrow')}</div>
