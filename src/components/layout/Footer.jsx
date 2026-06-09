@@ -86,11 +86,11 @@ export default function Footer() {
           <p style={{ fontSize: '0.84rem', color: '#6b8296' }}>
             {t('language') === 'bn' ? (
               <>
-                ডিজাইন, ডেভেলপ ও রক্ষণাবেক্ষণে ❤️ সহ <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
+                🤖 সহযোগে তৈরি করেছেন <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
               </>
             ) : (
               <>
-                Designed, developed, and maintained with ❤️ by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
+                Developed with 🤖 by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
               </>
             )}
           </p>
