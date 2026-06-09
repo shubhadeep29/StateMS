@@ -669,8 +669,8 @@ section > .container {
 }
 
 @keyframes float-slow {
-    0%   { transform: translateY(0px) rotate(0deg); }
-    100% { transform: translateY(-8px) rotate(0.8deg); }
+    0%   { transform: translateY(0px); }
+    100% { transform: translateY(-8px); }
 }
 
 .expert-icon {
@@ -1852,15 +1852,15 @@ section > .container {
 
 /* Animations */
 @keyframes float-slow {
-    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
-    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(-16px) rotate(6deg); }
-    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
+    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0); }
+    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(-16px); }
+    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0); }
 }
 
 @keyframes float-reverse {
-    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
-    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(14px) rotate(-8deg); }
-    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
+    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0); }
+    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(14px); }
+    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0); }
 }
 
 /* ===== BLURRED BACKGROUND ORBS ===== */
