@@ -86,11 +86,11 @@ export default function Footer() {
           <p style={{ fontSize: '0.84rem', color: '#6b8296' }}>
             {t('language') === 'bn' ? (
               <>
-                🤖 সহযোগে তৈরি করেছেন <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
+                🤖 এআই দ্বারা উন্নত, বিকাশ করেছেন <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
               </>
             ) : (
               <>
-                Developed with 🤖 by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
+                Enhanced by 🤖 AI, developed by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
               </>
             )}
           </p>
