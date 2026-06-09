@@ -21,7 +21,7 @@ const doctorsDatabase = [
     name: "Dr. Rehatun Nehar",
     qualification: "MBBS (WBUHS), Medical Officer (Hemtabad Rural Hospital)",
     specialty: "General Physician & Gynecology Specialist",
-    schedule: "Daily, 3:00 PM onwards",
+    schedule: "Daily, 5:00 PM onwards",
     fee: "Contact Counter",
     category: "gynae"
   }
@@ -30,8 +30,8 @@ const doctorsDatabase = [
 export default function Doctors() {
   const [activeCategory, setActiveCategory] = useState('all')
 
-  const filteredDoctors = activeCategory === 'all' 
-    ? doctorsDatabase 
+  const filteredDoctors = activeCategory === 'all'
+    ? doctorsDatabase
     : doctorsDatabase.filter(doc => doc.category === activeCategory)
 
   const categories = [
@@ -49,28 +49,28 @@ export default function Doctors() {
           <h2>Visiting <span className="highlight">Doctors Schedule</span></h2>
           <p>Consult with expert clinicians from top regional hospitals without leaving Kaliyaganj. Select a specialty to view visiting schedules and fee details.</p>
         </div>
-        
+
         <div className="doctor-widget">
           <div className="doctor-tabs" role="tablist" aria-label="Doctor Specialties">
             {categories.map(cat => (
-              <button 
+              <button
                 key={cat.id}
-                className={`tab-btn ${activeCategory === cat.id ? 'active' : ''}`} 
-                role="tab" 
+                className={`tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                role="tab"
                 aria-selected={activeCategory === cat.id}
-                aria-controls="doctorGrid" 
+                aria-controls="doctorGrid"
                 onClick={() => setActiveCategory(cat.id)}
               >
                 {cat.label}
               </button>
             ))}
           </div>
-          
+
           <div className="doctor-cards-grid" id="doctorGrid" role="tabpanel">
             {filteredDoctors.map((doc, index) => {
               const bookingMsg = encodeURIComponent(`Hello M/S State Medicine Shop, I would like to book a clinic consultation slot for Dr. ${doc.name} (${doc.specialty}). Please inform me about the next available timing.`)
               const whatsappLink = `https://wa.me/917501482099?text=${bookingMsg}`
-              
+
               return (
                 <div key={index} className="doctor-card glass-card">
                   <div className="doc-info-header">

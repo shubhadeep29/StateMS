@@ -65,7 +65,6 @@ export default function About() {
               src={`${import.meta.env.BASE_URL}assets/${galleryImages[activeImageIndex].src}`} 
               alt={galleryImages[activeImageIndex].alt} 
               className="about-image" 
-              style={{ width: '100%', borderRadius: 'var(--radius-lg)', objectFit: 'cover', height: '280px' }}
             />
             <div className="floating-card">
               <div className="expert-icon"><i className="fa-solid fa-camera"></i></div>
