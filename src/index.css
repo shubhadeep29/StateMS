@@ -392,6 +392,11 @@ section {
     position: relative;
 }
 
+section > .container {
+    position: relative;
+    z-index: 1;
+}
+
 .section-eyebrow {
     display: inline-flex;
     align-items: center;
