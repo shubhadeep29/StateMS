@@ -83,14 +83,14 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
           <p>{t('footer.copyright')}</p>
-          <p style={{ fontSize: '0.84rem', color: '#6b8296' }}>
+          <p style={{ fontSize: '0.84rem', color: '#6b8296', lineHeight: 1.6 }} className="footer-credits">
             {t('language') === 'bn' ? (
               <>
-                ডিজাইন, ডেভেলপ ও রক্ষণাবেক্ষণে ❤️ সহ <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
+                তৈরি ও রক্ষণাবেক্ষণে <br className="mobile-only-br" /> দ্বারা <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
               </>
             ) : (
               <>
-                Designed, developed, and maintained with ❤️ by <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
+                Built & maintained <br className="mobile-only-br" /> by <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
               </>
             )}
           </p>
