@@ -1934,6 +1934,10 @@ section {
     transform-origin: center;
 }
 
+#doctors.bg-medical-pattern::before {
+    transform: rotate(45deg) scale(1.45);
+}
+
 /* ===== SECTION SVG DIVIDERS ===== */
 .section-divider {
     position: absolute;
