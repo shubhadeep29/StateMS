@@ -94,9 +94,14 @@ export default function PrescriptionOrder() {
   const isPdf = file && file.type.includes('pdf')
 
   return (
-    <section id="order" className="bg-teal-light bg-grid-pattern">
+    <section id="order" className="bg-teal-light bg-medical-pattern">
       {/* Floating background icon */}
       <div className="bg-floating-icon icon-4"><i className="fa-solid fa-notes-medical"></i></div>
+
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-white" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,50 C480,20 960,70 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
 
       <div className="container">
         <div className="section-header">

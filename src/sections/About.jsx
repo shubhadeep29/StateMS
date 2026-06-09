@@ -63,6 +63,11 @@ export default function About() {
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-1"></div>
 
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-white" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C320,70 640,70 960,40 C1280,10 1360,10 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
+
       <div className="container about-container">
         <div className="about-image-wrapper gsap-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ position: 'relative', width: '100%' }}>

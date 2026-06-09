@@ -65,7 +65,7 @@
     /* Glass */
     --glass-bg: rgba(255, 255, 255, 0.82);
     --glass-border: rgba(255, 255, 255, 0.6);
-    --glass-shadow: 0 8px 32px rgba(13, 80, 75, 0.05);
+    --glass-shadow: 0 8px 32px rgba(15, 76, 129, 0.05);
 
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
@@ -177,12 +177,12 @@ a {
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    box-shadow: 0 4px 16px -2px rgba(13, 100, 90, 0.3);
+    box-shadow: 0 4px 16px -2px rgba(15, 76, 129, 0.25);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px -4px rgba(13, 100, 90, 0.4), var(--shadow-glow);
+    box-shadow: 0 8px 28px -4px rgba(15, 76, 129, 0.35), var(--shadow-glow);
 }
 
 .btn-secondary {
@@ -275,7 +275,7 @@ a {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 8px rgba(13, 148, 136, 0.25));
+    filter: drop-shadow(0 2px 8px rgba(15, 76, 129, 0.22));
 }
 
 .logo-text { display: flex; flex-direction: column; }
@@ -714,7 +714,7 @@ section {
     background: var(--gradient-primary);
     color: white;
     border-color: transparent;
-    box-shadow: 0 3px 8px rgba(13, 100, 90, 0.25);
+    box-shadow: 0 3px 8px rgba(15, 76, 129, 0.22);
 }
 
 .expert-text {
@@ -854,7 +854,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
-    box-shadow: 0 4px 16px rgba(13, 100, 90, 0.25);
+    box-shadow: 0 4px 16px rgba(15, 76, 129, 0.22);
     flex-shrink: 0;
 }
 
@@ -936,7 +936,7 @@ section {
     font-weight: 700;
     font-size: 0.82rem;
     flex-shrink: 0;
-    box-shadow: 0 3px 10px rgba(13, 100, 90, 0.3);
+    box-shadow: 0 3px 10px rgba(15, 76, 129, 0.25);
 }
 
 .step-text {
@@ -1139,7 +1139,7 @@ section {
 .tab-btn.active {
     background: var(--gradient-primary);
     color: white;
-    box-shadow: 0 3px 12px rgba(13, 100, 90, 0.3);
+    box-shadow: 0 3px 12px rgba(15, 76, 129, 0.25);
 }
 
 .doctor-cards-grid {
@@ -1705,7 +1705,7 @@ section {
         justify-content: center;
         align-items: center;
         transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: -12px 0 40px rgba(13, 80, 75, 0.12);
+        box-shadow: -12px 0 40px rgba(15, 76, 129, 0.1);
         z-index: 1001;
         display: flex !important;
         gap: 2rem;
@@ -1847,15 +1847,15 @@ section {
 
 /* Animations */
 @keyframes float-slow {
-    0%   { transform: translateY(0) rotate(0deg); }
-    50%  { transform: translateY(-16px) rotate(6deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
+    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(-16px) rotate(6deg); }
+    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
 }
 
 @keyframes float-reverse {
-    0%   { transform: translateY(0) rotate(0deg); }
-    50%  { transform: translateY(14px) rotate(-8deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+    0%   { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
+    50%  { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(14px) rotate(-8deg); }
+    100% { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) rotate(0deg); }
 }
 
 /* ===== BLURRED BACKGROUND ORBS ===== */
@@ -1913,3 +1913,62 @@ section {
 .bg-teal-light.bg-grid-pattern::before {
     background-image: radial-gradient(rgba(255, 109, 0, 0.035) 1.5px, transparent 1.5px);
 }
+
+/* ===== REPEATING MEDICAL SVG PATTERN ===== */
+.bg-medical-pattern {
+    position: relative;
+}
+
+.bg-medical-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.03'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-teal-light.bg-medical-pattern::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%23FF6D00' fill-opacity='0.02'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== SECTION SVG DIVIDERS ===== */
+.section-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.divider-bottom {
+    bottom: -1px;
+}
+
+.divider-top {
+    top: -1px;
+}
+
+@media (max-width: 768px) {
+    .section-divider {
+        height: 28px;
+    }
+}
+
+.divider-teal-light {
+    color: var(--bg-teal-light);
+}
+
+.divider-white {
+    color: white;
+}
+
+.divider-bg-color {
+    color: var(--bg-color);
+}
+

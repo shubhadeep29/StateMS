@@ -19,11 +19,16 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero bg-medical-pattern">
       {/* Floating background decorations */}
       <div className="bg-floating-icon icon-1"><i className="fa-solid fa-plus"></i></div>
       <div className="bg-floating-icon icon-2"><i className="fa-solid fa-prescription-bottle-medical"></i></div>
       <div className="bg-floating-icon icon-3"><i className="fa-solid fa-heart-pulse"></i></div>
+
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,0 C320,40 420,40 720,20 C1020,0 1120,0 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
 
       <div className="container hero-container">
         <div className="hero-text">

@@ -50,6 +50,11 @@ export default function Services() {
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-2"></div>
 
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,30 C480,70 960,10 1440,40 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
+
       <div className="container">
         <div className="section-header gsap-reveal">
           <div className="section-eyebrow"><i className="fa-solid fa-heart-pulse"></i> {t('services.eyebrow')}</div>

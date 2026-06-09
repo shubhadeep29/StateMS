@@ -25,7 +25,14 @@ export default function Contact() {
   }, { scope: sectionRef })
 
   return (
-    <section id="contact" ref={sectionRef}>
+    <section id="contact" ref={sectionRef} className="bg-grid-pattern">
+      {/* Blurred background orb */}
+      <div className="bg-blur-orb orb-2" style={{ top: '10%', right: '15%' }}></div>
+
+      {/* Floating background decorations */}
+      <div className="bg-floating-icon icon-4" style={{ top: '15%', left: '42%', opacity: 0.03 }}><i className="fa-solid fa-map-location-dot"></i></div>
+      <div className="bg-floating-icon icon-2" style={{ bottom: '15%', left: '8%', opacity: 0.03 }}><i className="fa-solid fa-envelope-open-text"></i></div>
+
       <div className="container">
         <div className="section-header gsap-reveal">
           <div className="section-eyebrow"><i className="fa-solid fa-map-location-dot"></i> {t('contact.eyebrow')}</div>

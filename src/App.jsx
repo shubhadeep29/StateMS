@@ -36,6 +36,27 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    let frameId
+    const handleMouseMove = (e) => {
+      frameId = requestAnimationFrame(() => {
+        const icons = document.querySelectorAll('.bg-floating-icon')
+        const x = (window.innerWidth / 2 - e.clientX) / 25
+        const y = (window.innerHeight / 2 - e.clientY) / 25
+        icons.forEach((icon, index) => {
+          const factor = (index % 3 + 1) * 0.45
+          icon.style.setProperty('--mx', `${x * factor}px`)
+          icon.style.setProperty('--my', `${y * factor}px`)
+        })
+      })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      cancelAnimationFrame(frameId)
+    }
+  }, [])
+
   return (
     <ThemeProvider>
       <LanguageProvider>

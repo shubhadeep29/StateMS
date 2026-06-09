@@ -19,7 +19,19 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="bg-teal-light">
+    <section id="faq" className="bg-teal-light bg-grid-pattern">
+      {/* Blurred background orb */}
+      <div className="bg-blur-orb orb-3" style={{ top: '20%', left: '10%' }}></div>
+
+      {/* Floating background decorations */}
+      <div className="bg-floating-icon icon-3" style={{ opacity: 0.04 }}><i className="fa-solid fa-circle-question"></i></div>
+      <div className="bg-floating-icon icon-1" style={{ opacity: 0.04, top: '40%', left: '5%' }}><i className="fa-solid fa-comments"></i></div>
+
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-bg-color" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C320,70 640,70 960,40 C1280,10 1360,10 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
+
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow"><i className="fa-solid fa-circle-question"></i> {t('faq.eyebrow')}</div>

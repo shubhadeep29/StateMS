@@ -62,9 +62,14 @@ export default function Doctors() {
   ]
 
   return (
-    <section id="doctors" className="bg-grid-pattern">
+    <section id="doctors" className="bg-medical-pattern">
       {/* Floating background icon */}
       <div className="bg-floating-icon icon-5"><i className="fa-solid fa-stethoscope"></i></div>
+
+      {/* Bottom Wave Divider */}
+      <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,20 C480,60 960,10 1440,40 L1440,74 L0,74 Z" fill="currentColor"></path>
+      </svg>
 
       <div className="container">
         <div className="section-header">
