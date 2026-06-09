@@ -1,4 +1,8 @@
+import { useLanguage } from '../context/LanguageContext'
+
 export default function Hero() {
+  const { t } = useLanguage()
+
   const handleOrderClick = (e) => {
     e.preventDefault()
     const targetElement = document.querySelector('#order')
@@ -19,36 +23,36 @@ export default function Hero() {
       <div className="container hero-container">
         <div className="hero-text">
           <div className="hero-badge">
-            <i className="fa-solid fa-shield-halved"></i> Trusted Local Healthcare Partner in Kaliyaganj
+            <i className="fa-solid fa-shield-halved"></i> {t('hero.badge')}
           </div>
-          <h1>Your Health, <br />Our <span className="gradient-text">Primary Mission</span></h1>
+          <h1>{t('hero.title1')} <br />{t('hero.title2')}</h1>
           <p className="hero-desc">
-            State Medicine Shop provides genuine prescription drugs, baby care essentials, and specialized doctor consultations for Kaliyaganj and surrounding communities.
+            {t('hero.desc')}
           </p>
           
           <div className="quick-info-pills">
-            <span className="info-pill"><i className="fa-solid fa-location-dot"></i> NS Road (Talkies Building)</span>
-            <span className="info-pill"><i className="fa-regular fa-clock"></i> Open Daily: 8 AM – 10 PM</span>
-            <span className="info-pill"><i className="fa-solid fa-truck-fast"></i> Home Delivery Available</span>
+            <span className="info-pill"><i className="fa-solid fa-location-dot"></i> {t('hero.pillAddress')}</span>
+            <span className="info-pill"><i className="fa-regular fa-clock"></i> {t('hero.pillTime')}</span>
+            <span className="info-pill"><i className="fa-solid fa-truck-fast"></i> {t('hero.pillDelivery')}</span>
           </div>
 
           <div className="hero-buttons">
             <a href="#order" className="btn btn-primary btn-large" onClick={handleOrderClick}>
-              <i className="fa-solid fa-file-prescription"></i> Order Online
+              <i className="fa-solid fa-file-prescription"></i> {t('hero.btnOrder')}
             </a>
             <a href="tel:+917501482099" className="btn btn-secondary btn-large">
-              <i className="fa-solid fa-phone"></i> Call Pharmacy
+              <i className="fa-solid fa-phone"></i> {t('hero.btnCall')}
             </a>
             <a href="https://wa.me/917501482099" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-large">
-              <i className="fa-brands fa-whatsapp"></i> WhatsApp Order
+              <i className="fa-brands fa-whatsapp"></i> {t('hero.btnWhatsapp')}
             </a>
           </div>
           
           <div className="trust-indicators">
-            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> 100% Genuine Medicines</div>
-            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> Trained Pharmacists</div>
-            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> UPI & Online Payments</div>
-            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> In-Clinic Doctors</div>
+            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustGenuine')}</div>
+            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustPharmacist')}</div>
+            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustPayments')}</div>
+            <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustDoctors')}</div>
           </div>
         </div>
         

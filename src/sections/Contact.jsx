@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
+import { useLanguage } from '../context/LanguageContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -7,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Contact() {
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useGSAP(() => {
     gsap.from('.gsap-reveal', {
@@ -26,9 +28,9 @@ export default function Contact() {
     <section id="contact" ref={sectionRef}>
       <div className="container">
         <div className="section-header gsap-reveal">
-          <div className="section-eyebrow"><i className="fa-solid fa-map-location-dot"></i> Find Us</div>
-          <h2>Pharmacy <span className="highlight">Location & Contact</span></h2>
-          <p>Visit us in person or reach out directly for instant pharmacy support. We are located near the commercial center of Kaliyaganj.</p>
+          <div className="section-eyebrow"><i className="fa-solid fa-map-location-dot"></i> {t('contact.eyebrow')}</div>
+          <h2>{t('contact.title1')} <span className="highlight">{t('contact.title2')}</span></h2>
+          <p>{t('contact.subtitle')}</p>
         </div>
         
         <div className="contact-grid">
@@ -36,10 +38,12 @@ export default function Contact() {
             <div className="contact-card glass-card gsap-reveal">
               <div className="card-icon"><i className="fa-solid fa-location-dot"></i></div>
               <div>
-                <h3>Store Address</h3>
-                <p>NS Road (Kaliyaganj Talkies Building)<br />Kaliyaganj, Uttar Dinajpur<br />West Bengal 733129</p>
+                <h3>{t('contact.addressTitle')}</h3>
+                <p style={{ whiteSpace: 'pre-line' }}>
+                  {t('contact.addressVal')}
+                </p>
                 <a href="https://maps.google.com/?q=State+Medicine+Shop+Kaliyaganj" target="_blank" rel="noopener noreferrer" className="maps-link">
-                  <i className="fa-solid fa-map-location-dot"></i> View on Google Maps
+                  <i className="fa-solid fa-map-location-dot"></i> {t('contact.mapsBtn')}
                 </a>
               </div>
             </div>
@@ -47,8 +51,8 @@ export default function Contact() {
             <div className="contact-card glass-card gsap-reveal">
               <div className="card-icon"><i className="fa-solid fa-phone"></i></div>
               <div>
-                <h3>Direct Phone Contact</h3>
-                <p>Call the pharmacy desk directly for orders or appointment bookings:</p>
+                <h3>{t('contact.phoneTitle')}</h3>
+                <p>{t('contact.phoneDesc')}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.5rem' }}>
                   <a href="tel:+918145555232" style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}>+91 81455 55232</a>
                   <a href="tel:+917501482099" style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}>+91 75014 82099</a>
@@ -59,10 +63,10 @@ export default function Contact() {
             <div className="contact-card glass-card gsap-reveal">
               <div className="card-icon"><i className="fa-solid fa-business-time"></i></div>
               <div>
-                <h3>Store Operating Hours</h3>
-                <p><strong>Open 7 Days a week</strong></p>
-                <p>Pharmacy counter: 8:00 AM – 10:00 PM</p>
-                <p>Clinic visits: Dependent on doctor schedules</p>
+                <h3>{t('contact.hoursTitle')}</h3>
+                <p><strong>{t('contact.hoursSubtitle')}</strong></p>
+                <p>{t('contact.hoursCounter')}</p>
+                <p>{t('contact.hoursClinic')}</p>
               </div>
             </div>
           </div>

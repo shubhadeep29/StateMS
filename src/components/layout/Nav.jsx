@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function Nav() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isShrunk, setIsShrunk] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrollProgress, setScrollProgress] = useState(0)
+  const { language, setLanguage, t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -131,18 +133,50 @@ export default function Nav() {
           </a>
 
           <nav className={`nav ${isMobileOpen ? 'active' : ''}`} id="mainNavigation" aria-label="Main Navigation">
-            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>Home</a>
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>About</a>
-            <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>Services</a>
-            <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>Order Online</a>
-            <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>Doctor Schedule</a>
-            <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a>
-            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>Contact</a>
+            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>{t('nav.home')}</a>
+            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>{t('nav.about')}</a>
+            <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>{t('nav.services')}</a>
+            <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>{t('nav.order')}</a>
+            <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>{t('nav.doctors')}</a>
+            <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>{t('nav.faq')}</a>
+            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>{t('nav.contact')}</a>
+            
+            {/* Mobile Language Toggle */}
+            <div className="mobile-lang-switcher">
+              <button 
+                onClick={() => { setLanguage('bn'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
+                className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
+              >
+                বাংলা
+              </button>
+              <button 
+                onClick={() => { setLanguage('en'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+              >
+                EN
+              </button>
+            </div>
           </nav>
 
-          <div className="header-actions">
+          <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Desktop Language Toggle */}
+            <div className="lang-switcher">
+              <button 
+                onClick={() => setLanguage('bn')}
+                className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
+              >
+                বাংলা
+              </button>
+              <button 
+                onClick={() => setLanguage('en')}
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+              >
+                EN
+              </button>
+            </div>
+
             <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn">
-              <i className="fa-solid fa-phone"></i> Call Pharmacy
+              <i className="fa-solid fa-phone"></i> {t('nav.call')}
             </a>
           </div>
 

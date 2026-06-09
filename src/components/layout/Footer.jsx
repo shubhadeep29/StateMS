@@ -1,4 +1,8 @@
+import { useLanguage } from '../../context/LanguageContext'
+
 export default function Footer() {
+  const { t } = useLanguage()
+
   const handleLinkClick = (e, id) => {
     e.preventDefault()
     const targetElement = document.querySelector(id)
@@ -30,7 +34,7 @@ export default function Footer() {
             </div>
           </a>
           <p className="footer-desc">
-            Trusted pharmacy clinic located in Kaliyaganj, Uttar Dinajpur, West Bengal. We provide verified authentic medicines, wellness products, and specialist clinical diagnostics.
+            {t('footer.desc')}
           </p>
           <div className="social-links">
             <a href="https://www.facebook.com/SMEDICINESHOP22?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Facebook Page">
@@ -43,11 +47,11 @@ export default function Footer() {
         </div>
 
         <div className="footer-col">
-          <h4>Contact Details</h4>
+          <h4>{t('footer.contact')}</h4>
           <ul className="contact-list">
             <li>
               <i className="fa-solid fa-location-dot"></i>
-              <span>NS Road (Kaliyaganj Talkies Building),<br />Kaliyaganj, Uttar Dinajpur - 733129</span>
+              <span>{t('contact.addressVal')}</span>
             </li>
             <li>
               <i className="fa-solid fa-phone"></i>
@@ -64,21 +68,21 @@ export default function Footer() {
         </div>
 
         <div className="footer-col">
-          <h4>Site Links</h4>
+          <h4>{t('footer.links')}</h4>
           <ul className="footer-links">
-            <li><a href="#home" onClick={(e) => handleLinkClick(e, '#home')}>Home</a></li>
-            <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')}>About Pharmacy</a></li>
-            <li><a href="#services" onClick={(e) => handleLinkClick(e, '#services')}>Our Services</a></li>
-            <li><a href="#order" onClick={(e) => handleLinkClick(e, '#order')}>WhatsApp Ordering</a></li>
-            <li><a href="#doctors" onClick={(e) => handleLinkClick(e, '#doctors')}>Consult Visiting Doctors</a></li>
-            <li><a href="#faq" onClick={(e) => handleLinkClick(e, '#faq')}>FAQ</a></li>
-            <li><a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')}>Location Map</a></li>
+            <li><a href="#home" onClick={(e) => handleLinkClick(e, '#home')}>{t('nav.home')}</a></li>
+            <li><a href="#about" onClick={(e) => handleLinkClick(e, '#about')}>{t('nav.about')}</a></li>
+            <li><a href="#services" onClick={(e) => handleLinkClick(e, '#services')}>{t('nav.services')}</a></li>
+            <li><a href="#order" onClick={(e) => handleLinkClick(e, '#order')}>{t('nav.order')}</a></li>
+            <li><a href="#doctors" onClick={(e) => handleLinkClick(e, '#doctors')}>{t('nav.doctors')}</a></li>
+            <li><a href="#faq" onClick={(e) => handleLinkClick(e, '#faq')}>{t('nav.faq')}</a></li>
+            <li><a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')}>{t('nav.contact')}</a></li>
           </ul>
         </div>
       </div>
       <div className="footer-bottom">
         <div className="container text-center">
-          <p>&copy; {new Date().getFullYear()} M/S State Medicine Shop. All rights reserved. Registered Chemist & Druggist in West Bengal, India.</p>
+          <p>{t('footer.copyright')}</p>
         </div>
       </div>
     </footer>

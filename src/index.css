@@ -329,6 +329,40 @@ a {
 .nav a.active { color: var(--primary); }
 .nav a.active::after { width: 100%; }
 
+.lang-switcher {
+    display: flex;
+    border-radius: 20px;
+    background: var(--primary-pale);
+    padding: 2px;
+    border: 1px solid var(--border-color-glow);
+    align-items: center;
+}
+
+.lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    padding: 4px 12px;
+    border-radius: 18px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    color: var(--primary);
+}
+
+.lang-btn.active {
+    background: var(--accent);
+    color: #fff !important;
+}
+
+.mobile-lang-switcher {
+    display: none;
+}
+
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;
@@ -1681,6 +1715,16 @@ section {
     .nav a { font-size: 1.2rem; }
 
     .header-actions  { display: none; }
+    .lang-switcher   { display: none !important; }
+    .mobile-lang-switcher {
+        display: flex !important;
+        border-radius: 20px;
+        background: var(--primary-pale);
+        padding: 2px;
+        border: 1px solid var(--border-color-glow);
+        align-items: center;
+        margin-top: 1.5rem;
+    }
 
     .mobile-menu-btn {
         display: block;

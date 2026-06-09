@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function PrescriptionOrder() {
   const [file, setFile] = useState(null)
@@ -6,6 +7,7 @@ export default function PrescriptionOrder() {
   const [address, setAddress] = useState('')
   const [isDragOver, setIsDragOver] = useState(false)
   const fileInputRef = useRef(null)
+  const { language, t } = useLanguage()
 
   const formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes'
@@ -27,7 +29,7 @@ export default function PrescriptionOrder() {
     if (isImage || isPdf) {
       setFile(selectedFile)
     } else {
-      alert("Invalid file format. Please upload only prescription images (JPG, PNG, WebP) or PDF documents.")
+      alert(t('order.validation.invalidType'))
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
       }
@@ -78,10 +80,14 @@ export default function PrescriptionOrder() {
 
   // Generate WhatsApp Order Link
   const getWhatsAppLink = () => {
-    const nameStr = patientName.trim() || 'Not specified'
-    const addressStr = address.trim() || 'Pickup from Store'
-    const fileStr = file ? file.name : 'Prescription'
-    const message = `Hello M/S State Medicine Shop, I would like to order medicines by uploading a prescription.\n\n*Order Details*:\n- *Patient Name:* ${nameStr}\n- *Delivery Address:* ${addressStr}\n- *Prescription File Attached:* ${fileStr}\n\n(I am attaching the prescription file to this chat next for your review and billing verification.)`
+    const nameStr = patientName.trim() || (language === 'bn' ? 'উল্লেখ নেই' : 'Not specified')
+    const addressStr = address.trim() || (language === 'bn' ? 'দোকান থেকে পিকআপ' : 'Pickup from Store')
+    const fileStr = file ? file.name : (language === 'bn' ? 'প্রেসক্রিপশন' : 'Prescription')
+    
+    const message = language === 'bn' 
+      ? `হ্যালো এম/এস স্টেট মেডিসিন শপ, আমি একটি প্রেসক্রিপশন আপলোড করে ওষুধ অর্ডার করতে চাই।\n\n*অর্ডারের বিবরণ*:\n- *রোগীর নাম:* ${nameStr}\n- *ডেলিভারি ঠিকানা:* ${addressStr}\n- *সংযুক্ত প্রেসক্রিপশন ফাইল:* ${fileStr}\n\n(আমি আমার প্রেসক্রিপশন ফাইলটি এই চ্যাটের সাথে পরবর্তীতে পাঠাচ্ছি আপনার যাচাই ও বিলিংয়ের জন্য।)`
+      : `Hello M/S State Medicine Shop, I would like to order medicines by uploading a prescription.\n\n*Order Details*:\n- *Patient Name:* ${nameStr}\n- *Delivery Address:* ${addressStr}\n- *Prescription File Attached:* ${fileStr}\n\n(I am attaching the prescription file to this chat next for your review and billing verification.)`
+      
     return `https://wa.me/917501482099?text=${encodeURIComponent(message)}`
   }
 
@@ -91,34 +97,34 @@ export default function PrescriptionOrder() {
     <section id="order" className="bg-teal-light">
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow"><i className="fa-brands fa-whatsapp"></i> Online Ordering</div>
-          <h2>Order via <span className="highlight">Prescription Upload</span></h2>
-          <p>Have a hand-written doctor prescription? Simply take a photo, drag and drop it below, and click to complete your order directly on WhatsApp.</p>
+          <div className="section-eyebrow"><i className="fa-brands fa-whatsapp"></i> {t('order.eyebrow')}</div>
+          <h2>{t('order.title1')} <span className="highlight">{t('order.title2')}</span></h2>
+          <p>{t('order.subtitle')}</p>
         </div>
         
         <div className="prescription-container">
           <div className="prescription-info-text">
-            <h3>Simple 3-Step WhatsApp Order</h3>
-            <p>Ordering medications from State Medicine Shop has never been easier. Follow these steps to submit your order directly to our counter:</p>
+            <h3>{t('order.stepTitle')}</h3>
+            <p>{t('order.stepDesc')}</p>
             
             <div className="upload-steps">
               <div className="step-item">
                 <div className="step-num">1</div>
-                <div className="step-text">Select or drag in your prescription image.</div>
+                <div className="step-text">{t('order.step1')}</div>
               </div>
               <div className="step-item">
                 <div className="step-num">2</div>
-                <div className="step-text">Confirm your contact number and home address details.</div>
+                <div className="step-text">{t('order.step2')}</div>
               </div>
               <div className="step-item">
                 <div className="step-num">3</div>
-                <div className="step-text">Click "Submit Order" to open WhatsApp and attach the prescription image.</div>
+                <div className="step-text">{t('order.step3')}</div>
               </div>
             </div>
             
             <div className="info-pill" style={{ marginTop: '1rem', borderColor: 'rgba(16, 185, 129, 0.25)' }}>
-              <i className="fa-solid fa-circle-info" style={{ color: 'var(--success)' }}></i>
-              <span>All orders are hand-verified by a licensed pharmacist before dispensing.</span>
+              <i className="fa-solid fa-circle-info" style={{ color: 'var(--accent)' }}></i>
+              <span>{t('order.infoVerify')}</span>
             </div>
           </div>
           
@@ -144,8 +150,8 @@ export default function PrescriptionOrder() {
                   style={{ display: 'none' }}
                 />
                 <i className="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
-                <p>Drag & Drop Prescription</p>
-                <span>or click to browse files (JPG, PNG, PDF)</span>
+                <p>{t('order.dragText')}</p>
+                <span>{t('order.fileNote')}</span>
                 <button 
                   type="button" 
                   className="btn btn-secondary btn-sm" 
@@ -155,7 +161,7 @@ export default function PrescriptionOrder() {
                     triggerFileBrowser()
                   }}
                 >
-                  Browse File
+                  {language === 'bn' ? 'ফাইল সিলেক্ট করুন' : 'Browse File'}
                 </button>
               </div>
             ) : (
@@ -187,24 +193,24 @@ export default function PrescriptionOrder() {
 
                 <div className="whatsapp-checkout-container" id="whatsappCheckoutContainer" style={{ display: 'block' }}>
                   <div className="form-group">
-                    <label htmlFor="patientName" className="form-label">Patient Name</label>
+                    <label htmlFor="patientName" className="form-label">{t('order.fieldLabelName')}</label>
                     <input 
                       type="text" 
                       id="patientName" 
                       className="form-input" 
-                      placeholder="Enter patient name" 
+                      placeholder={t('order.fieldNamePlaceholder')} 
                       value={patientName}
                       onChange={(e) => setPatientName(e.target.value)}
                       required 
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="deliveryAddress" className="form-label">Delivery Address (Kaliyaganj)</label>
+                    <label htmlFor="deliveryAddress" className="form-label">{t('order.fieldLabelAddress')}</label>
                     <textarea 
                       id="deliveryAddress" 
                       rows="2" 
                       className="form-textarea" 
-                      placeholder="Enter full address for home delivery"
+                      placeholder={t('order.fieldAddressPlaceholder')}
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     ></textarea>
@@ -218,10 +224,10 @@ export default function PrescriptionOrder() {
                     id="sendWhatsAppOrderBtn" 
                     style={{ width: '100%', marginTop: '0.5rem' }}
                   >
-                    <i className="fa-brands fa-whatsapp"></i> Send Order via WhatsApp
+                    <i className="fa-brands fa-whatsapp"></i> {t('order.btnSubmit')}
                   </a>
                   <p style={{ fontSize: '0.76rem', color: 'var(--text-light)', textAlign: 'center', marginTop: '0.65rem' }}>
-                    Remember to attach the prescription image in WhatsApp after sending!
+                    {t('order.whatsappInfo')}
                   </p>
                 </div>
               </div>

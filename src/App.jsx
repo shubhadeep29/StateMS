@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ThemeProvider } from './context/ThemeContext'
+import { LanguageProvider } from './context/LanguageContext'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
@@ -37,26 +38,28 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Nav />
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <PrescriptionOrder />
-          <Doctors />
-          <FAQ />
-          <Contact />
-        </main>
-        <motion.div>
-          <Footer />
+      <LanguageProvider>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Nav />
+          <main>
+            <Hero />
+            <About />
+            <Services />
+            <PrescriptionOrder />
+            <Doctors />
+            <FAQ />
+            <Contact />
+          </main>
+          <motion.div>
+            <Footer />
+          </motion.div>
+          <WhatsAppWidget />
         </motion.div>
-        <WhatsAppWidget />
-      </motion.div>
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

@@ -1,46 +1,48 @@
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
+import { useLanguage } from '../context/LanguageContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const galleryImages = [
-  {
-    src: 'pharmacy_hero.png',
-    alt: 'M/S State Medicine Shop Storefront',
-    label: 'Store Front',
-    badge: 'Actual Store Front'
-  },
-  {
-    src: 'shop_counter.png',
-    alt: 'Medicine Dispensation Counter',
-    label: 'Dispensing Counter',
-    badge: 'Shop Service Counter'
-  },
-  {
-    src: 'shop_shelves.png',
-    alt: 'Authentic Medicine Inventory Shelves',
-    label: 'Medicine Inventory',
-    badge: '100% Genuine Stocks'
-  },
-  {
-    src: 'waiting_area.png',
-    alt: 'OPD Clinic Patient Waiting Lounge',
-    label: 'Waiting Area',
-    badge: 'OPD Waiting Lounge'
-  },
-  {
-    src: 'consultation_room.png',
-    alt: 'Doctor Consultation Chamber',
-    label: 'Doctor Chamber',
-    badge: 'Doctor Consultation Chamber'
-  }
-]
-
 export default function About() {
   const sectionRef = useRef(null)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const { t } = useLanguage()
+
+  const galleryImages = [
+    {
+      src: 'pharmacy_hero.png',
+      alt: 'M/S State Medicine Shop Storefront',
+      label: t('about.gallery.storeFront'),
+      badge: t('about.badges.storeFront')
+    },
+    {
+      src: 'shop_counter.png',
+      alt: 'Medicine Dispensation Counter',
+      label: t('about.gallery.counter'),
+      badge: t('about.badges.counter')
+    },
+    {
+      src: 'shop_shelves.png',
+      alt: 'Authentic Medicine Inventory Shelves',
+      label: t('about.gallery.inventory'),
+      badge: t('about.badges.inventory')
+    },
+    {
+      src: 'waiting_area.png',
+      alt: 'OPD Clinic Patient Waiting Lounge',
+      label: t('about.gallery.waiting'),
+      badge: t('about.badges.waiting')
+    },
+    {
+      src: 'consultation_room.png',
+      alt: 'Doctor Consultation Chamber',
+      label: t('about.gallery.chamber'),
+      badge: t('about.badges.chamber')
+    }
+  ]
 
   useGSAP(() => {
     gsap.from('.gsap-reveal', {
@@ -88,32 +90,32 @@ export default function About() {
         </div>
         
         <div className="about-text">
-          <h2 className="gsap-reveal">About <span className="highlight">State Medicine Shop</span></h2>
+          <h2 className="gsap-reveal">{t('about.eyebrow')} <span className="highlight">{t('about.title2')}</span></h2>
           <p className="lead-text gsap-reveal">
-            Serving Kaliyaganj, Uttar Dinajpur, and surrounding areas with pharmacy excellence and reliable healthcare advice.
+            {t('about.lead')}
           </p>
           <p className="gsap-reveal">
-            We are a dedicated local retail pharmacy that acts as a single-point destination for all your family's health requirements. From prescription drugs, chronic disease management (diabetes, blood pressure, cardiac care), to general wellness supplements and child care products, we stock all essential items from verified manufacturers.
+            {t('about.p1')}
           </p>
           <p className="gsap-reveal">
-            We also feature an attached outpatient clinic hosting top visiting specialist doctors to ensure the local community does not have to travel long distances for expert medical opinions.
+            {t('about.p2')}
           </p>
           
           <div className="stats-grid">
             <div className="stat-box glass-card gsap-reveal">
               <i className="fa-solid fa-business-time"></i>
-              <h4>5+ Years</h4>
-              <p>Serving Kaliyaganj</p>
+              <h4>{t('about.stats.years')}</h4>
+              <p>{t('about.stats.yearsSub')}</p>
             </div>
             <div className="stat-box glass-card gsap-reveal">
               <i className="fa-solid fa-heart-pulse"></i>
-              <h4>100%</h4>
-              <p>Authentic Stock</p>
+              <h4>{t('about.stats.authentic')}</h4>
+              <p>{t('about.stats.authenticSub')}</p>
             </div>
             <div className="stat-box glass-card gsap-reveal">
               <i className="fa-solid fa-users"></i>
-              <h4>10k+</h4>
-              <p>Satisfied Patients</p>
+              <h4>{t('about.stats.patients')}</h4>
+              <p>{t('about.stats.patientsSub')}</p>
             </div>
           </div>
         </div>
