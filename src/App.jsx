@@ -7,6 +7,7 @@ import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
 import ShareWidget from './components/layout/ShareWidget'
+import ScrollToTop from './components/layout/ScrollToTop'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
@@ -81,6 +82,7 @@ export default function App() {
           </motion.div>
           <WhatsAppWidget />
           <ShareWidget />
+          <ScrollToTop />
         </motion.div>
       </LanguageProvider>
     </ThemeProvider>
