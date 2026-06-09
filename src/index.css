@@ -1595,6 +1595,76 @@ section > .container {
     box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
 }
 
+/* ===== FLOATING SHARE BUTTON ===== */
+.share-widget-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 999;
+}
+
+.floating-share {
+    background: var(--gradient-accent);
+    color: white;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(255, 109, 0, 0.35);
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.floating-share::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: share-pulse 2.4s ease-out infinite;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+@keyframes share-pulse {
+    0%   { transform: scale(1);    opacity: 0.6; }
+    70%  { transform: scale(1.6);  opacity: 0;   }
+    100% { transform: scale(1.6);  opacity: 0;   }
+}
+
+.floating-share:hover {
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 10px 30px rgba(255, 109, 0, 0.45);
+}
+
+.share-toast {
+    position: absolute;
+    bottom: 72px;
+    left: 0;
+    background: #0f172a;
+    color: white;
+    padding: 0.5rem 0.95rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    animation: toast-fade 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toast-fade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* ===== SCROLL REVEAL ===== */
 .reveal-on-scroll {
     opacity: 0;
@@ -1795,6 +1865,21 @@ section > .container {
         width: 52px;
         height: 52px;
         font-size: 1.85rem;
+    }
+
+    .share-widget-container {
+        bottom: 1.25rem;
+        left: 1.25rem;
+    }
+
+    .floating-share {
+        width: 52px;
+        height: 52px;
+        font-size: 1.4rem;
+    }
+
+    .share-toast {
+        bottom: 64px;
     }
 }
 

@@ -6,6 +6,7 @@ import { LanguageProvider } from './context/LanguageContext'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
+import ShareWidget from './components/layout/ShareWidget'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
@@ -79,6 +80,7 @@ export default function App() {
             <Footer />
           </motion.div>
           <WhatsAppWidget />
+          <ShareWidget />
         </motion.div>
       </LanguageProvider>
     </ThemeProvider>
