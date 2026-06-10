@@ -1583,22 +1583,22 @@ section>.container {
 }
 
 .footer-logo-img {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
-    margin-left: -10px;
-    margin-right: -2px;
+    margin-left: 0;
+    margin-right: 0.45rem;
     transition: all 0.3s ease;
 }
 
 .footer-logo .logo-title {
     color: white;
-    font-size: 1.45rem;
+    font-size: 1.35rem;
 }
 
 .footer-logo .logo-subtitle {
     color: var(--primary-light);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
 }
 
 .footer-logo .logo-icon {
@@ -2077,18 +2077,18 @@ section>.container {
     }
 
     .footer-logo-img {
-        width: 56px;
-        height: 56px;
-        margin-left: -12px;
-        margin-right: -2px;
+        width: 48px;
+        height: 48px;
+        margin-left: 0;
+        margin-right: 0.45rem;
     }
 
     .footer-logo .logo-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
     }
 
     .footer-logo .logo-subtitle {
-        font-size: 0.68rem;
+        font-size: 0.64rem;
     }
 
     .nav {
@@ -2271,18 +2271,18 @@ section>.container {
     }
 
     .footer-logo-img {
-        width: 48px;
-        height: 48px;
-        margin-left: -10px;
-        margin-right: -2px;
+        width: 44px;
+        height: 44px;
+        margin-left: 0;
+        margin-right: 0.45rem;
     }
 
     .footer-logo .logo-title {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
     }
 
     .footer-logo .logo-subtitle {
-        font-size: 0.62rem;
+        font-size: 0.6rem;
     }
 
     .header-actions {
