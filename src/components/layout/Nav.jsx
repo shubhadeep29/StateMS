@@ -88,7 +88,7 @@ export default function Nav() {
 
   return (
     <>
-      <div 
+      <div
         className="scroll-progress-bar"
         style={{
           position: 'fixed',
@@ -104,8 +104,8 @@ export default function Nav() {
           transition: 'transform 0.1s cubic-bezier(0.1, 0.8, 0.3, 1)'
         }}
       />
-      <header 
-        className="header" 
+      <header
+        className="header"
         style={{
           backgroundColor: isShrunk ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
           boxShadow: isShrunk ? 'var(--shadow-sm)' : 'none',
@@ -113,18 +113,18 @@ export default function Nav() {
           transition: 'all 0.3s ease'
         }}
       >
-        <div 
-          className="container header-content" 
+        <div
+          className="container header-content"
           style={{
             height: isShrunk ? '64px' : '84px',
             transition: 'height 0.3s ease'
           }}
         >
           <a href="#" className="logo" id="logoLink" onClick={(e) => handleLinkClick(e, '#home')}>
-            <img 
-              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
-              alt="M/S State Medicine Shop Logo" 
-              style={{ width: '44px', height: '44px', objectFit: 'contain', marginRight: '0.25rem' }}
+            <img
+              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`}
+              alt="M/S State Medicine Shop Logo"
+              className="logo-img"
             />
             <div className="logo-text">
               <span className="logo-title">M/S STATE</span>
@@ -140,20 +140,20 @@ export default function Nav() {
             <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>{t('nav.doctors')}</a>
             <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>{t('nav.faq')}</a>
             <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>{t('nav.contact')}</a>
-            
+
             {/* Mobile Language Toggle */}
             <div className="mobile-lang-switcher">
-              <button 
+              <button
                 onClick={() => { setLanguage('bn'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
                 className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
               >
-                বাংলা
+                ব
               </button>
-              <button 
+              <button
                 onClick={() => { setLanguage('en'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
                 className={`lang-btn ${language === 'en' ? 'active' : ''}`}
               >
-                EN
+                E
               </button>
             </div>
           </nav>
@@ -161,13 +161,13 @@ export default function Nav() {
           <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* Desktop Language Toggle */}
             <div className="lang-switcher">
-              <button 
+              <button
                 onClick={() => setLanguage('bn')}
                 className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
               >
                 বাংলা
               </button>
-              <button 
+              <button
                 onClick={() => setLanguage('en')}
                 className={`lang-btn ${language === 'en' ? 'active' : ''}`}
               >
@@ -180,10 +180,10 @@ export default function Nav() {
             </a>
           </div>
 
-          <button 
-            className="mobile-menu-btn" 
-            id="mobileMenuBtn" 
-            aria-label="Toggle menu" 
+          <button
+            className="mobile-menu-btn"
+            id="mobileMenuBtn"
+            aria-label="Toggle menu"
             aria-expanded={isMobileOpen}
             onClick={toggleMobileMenu}
           >

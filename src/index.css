@@ -270,6 +270,14 @@ a {
     color: var(--primary);
 }
 
+.logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    margin-right: 0.25rem;
+    transition: all 0.3s ease;
+}
+
 .logo-icon {
     font-size: 2.1rem;
     background: var(--gradient-primary);
@@ -1807,9 +1815,22 @@ section > .container {
 }
 
 @media (max-width: 768px) {
-    .header-content { height: 72px; }
-    .logo-title     { font-size: 1.25rem; }
-    .logo-subtitle  { font-size: 0.64rem; }
+    .header-content {
+        height: 72px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .logo {
+        gap: 0.5rem;
+    }
+    .logo-img {
+        width: 52px;
+        height: 52px;
+    }
+    .logo-title     { font-size: 1.3rem; }
+    .logo-subtitle  { font-size: 0.68rem; }
     .logo-icon      { font-size: 1.9rem; }
 
     .nav {
@@ -1822,7 +1843,8 @@ section > .container {
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 5.5rem;
         align-items: center;
         transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         box-shadow: -12px 0 40px rgba(15, 76, 129, 0.1);
@@ -1834,16 +1856,26 @@ section > .container {
     .nav.active { right: 0; }
     .nav a { font-size: 1.2rem; }
 
-    .header-actions  { display: none; }
-    .lang-switcher   { display: none !important; }
-    .mobile-lang-switcher {
+    .header-actions {
         display: flex !important;
-        border-radius: 20px;
-        background: var(--primary-pale);
-        padding: 2px;
-        border: 1px solid var(--border-color-glow);
+        gap: 0.5rem !important;
         align-items: center;
-        margin-top: 1.5rem;
+        margin-left: auto;
+    }
+    .lang-switcher {
+        display: flex !important;
+        gap: 0;
+    }
+    .lang-switcher .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.72rem;
+    }
+    .cta-btn {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.78rem !important;
+    }
+    .mobile-lang-switcher {
+        display: none !important;
     }
 
     .mobile-menu-btn {
@@ -1899,6 +1931,30 @@ section > .container {
 }
 
 @media (max-width: 480px) {
+    .header-content {
+        gap: 0.4rem;
+    }
+    .logo {
+        gap: 0.35rem;
+    }
+    .logo-img {
+        width: 44px;
+        height: 44px;
+    }
+    .logo-title {
+        font-size: 1.15rem;
+    }
+    .logo-subtitle {
+        font-size: 0.6rem;
+    }
+    .header-actions {
+        gap: 0.35rem !important;
+    }
+    .cta-btn {
+        padding: 0.35rem 0.65rem !important;
+        font-size: 0.72rem !important;
+    }
+
     .hero-text h1     { font-size: 2.1rem; }
     .section-header h2{ font-size: 2rem; letter-spacing: -0.4px; }
 
