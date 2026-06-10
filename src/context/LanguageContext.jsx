@@ -344,10 +344,40 @@ export function LanguageProvider({ children }) {
     return saved === 'en' || saved === 'bn' ? saved : 'bn'
   })
 
+  const [isChangingLanguage, setIsChangingLanguage] = useState(false)
+  const [isFadingOut, setIsFadingOut] = useState(false)
+  const [pendingLanguage, setPendingLanguage] = useState(null)
+
   useEffect(() => {
     localStorage.setItem('language', language)
     document.documentElement.lang = language
   }, [language])
+
+  const changeLanguageWithLoader = (newLang) => {
+    if (newLang === language || isChangingLanguage) return
+
+    setPendingLanguage(newLang)
+    setIsChangingLanguage(true)
+    setIsFadingOut(false)
+
+    // 1. Wait for overlay to fade in (250ms)
+    setTimeout(() => {
+      // 2. Perform the language change
+      setLanguage(newLang)
+
+      // 3. Keep loader visible briefly so user notices it (450ms)
+      setTimeout(() => {
+        setIsFadingOut(true)
+
+        // 4. Wait for fade out animation to finish (300ms) before unmounting
+        setTimeout(() => {
+          setIsChangingLanguage(false)
+          setIsFadingOut(false)
+          setPendingLanguage(null)
+        }, 300)
+      }, 450)
+    }, 250)
+  }
 
   const t = (key) => {
     const keys = key.split('.')
@@ -372,8 +402,20 @@ export function LanguageProvider({ children }) {
   }
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: changeLanguageWithLoader, t }}>
       {children}
+      {isChangingLanguage && (
+        <div className={`language-loader-overlay ${isFadingOut ? 'fade-out' : ''}`}>
+          <div className="language-loader-container">
+            <div className="language-spinner-ring">
+              <i className="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div className="language-loader-text">
+              {pendingLanguage === 'bn' ? 'বাংলা করা হচ্ছে...' : 'Switching to English...'}
+            </div>
+          </div>
+        </div>
+      )}
     </LanguageContext.Provider>
   )
 }
