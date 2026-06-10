@@ -6,6 +6,7 @@ export default function PrescriptionOrder() {
   const [patientName, setPatientName] = useState('')
   const [address, setAddress] = useState('')
   const [isDragOver, setIsDragOver] = useState(false)
+  const [consentChecked, setConsentChecked] = useState(false)
   const fileInputRef = useRef(null)
   const { language, t } = useLanguage()
 
@@ -67,6 +68,7 @@ export default function PrescriptionOrder() {
     setFile(null)
     setPatientName('')
     setAddress('')
+    setConsentChecked(false)
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
@@ -200,6 +202,11 @@ export default function PrescriptionOrder() {
                 </div>
 
                 <div className="whatsapp-checkout-container" id="whatsappCheckoutContainer" style={{ display: 'block' }}>
+                  <div className="info-alert-box">
+                    <i className="fa-solid fa-circle-exclamation"></i>
+                    <p>{t('order.whatsappManualAlert')}</p>
+                  </div>
+
                   <div className="form-group">
                     <label htmlFor="patientName" className="form-label">{t('order.fieldLabelName')}</label>
                     <input 
@@ -223,20 +230,96 @@ export default function PrescriptionOrder() {
                       onChange={(e) => setAddress(e.target.value)}
                     ></textarea>
                   </div>
+
+                  <div className="consent-checkbox-group">
+                    <label className="checkbox-container">
+                      <input 
+                        type="checkbox" 
+                        id="legalConsent" 
+                        checked={consentChecked}
+                        onChange={(e) => setConsentChecked(e.target.checked)}
+                      />
+                      <span className="checkbox-checkmark"></span>
+                      <span className="checkbox-text">
+                        {language === 'bn' ? (
+                          <>
+                            আমি{" "}
+                            <span 
+                              className="legal-link" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                window.dispatchEvent(new CustomEvent('open-terms-modal', { detail: { tab: 'terms' } }));
+                              }}
+                            >
+                              ব্যবহার বিধি
+                            </span>{" "}
+                            ও{" "}
+                            <span 
+                              className="legal-link" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                window.dispatchEvent(new CustomEvent('open-terms-modal', { detail: { tab: 'privacy' } }));
+                              }}
+                            >
+                              গোপনীয়তা নীতি
+                            </span>{" "}
+                            মেনে চলছি এবং ওষুধ অর্ডারের জন্য প্রেসক্রিপশন ও তথ্যের ব্যবহারে সম্মতি জানাচ্ছি।
+                          </>
+                        ) : (
+                          <>
+                            I agree to the{" "}
+                            <span 
+                              className="legal-link" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                window.dispatchEvent(new CustomEvent('open-terms-modal', { detail: { tab: 'terms' } }));
+                              }}
+                            >
+                              Terms of Service
+                            </span>{" "}
+                            &{" "}
+                            <span 
+                              className="legal-link" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                window.dispatchEvent(new CustomEvent('open-terms-modal', { detail: { tab: 'privacy' } }));
+                              }}
+                            >
+                              Privacy Policy
+                            </span>
+                            , and consent to share my prescription and details for ordering.
+                          </>
+                        )}
+                      </span>
+                    </label>
+                  </div>
                   
                   <a 
-                    href={getWhatsAppLink()} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn btn-whatsapp" 
+                    href={consentChecked ? getWhatsAppLink() : undefined} 
+                    target={consentChecked ? "_blank" : undefined} 
+                    rel={consentChecked ? "noopener noreferrer" : undefined}
+                    className={`btn btn-whatsapp ${!consentChecked ? 'btn-disabled' : ''}`} 
                     id="sendWhatsAppOrderBtn" 
                     style={{ width: '100%', marginTop: '0.5rem' }}
+                    onClick={(e) => {
+                      if (!consentChecked) {
+                        e.preventDefault()
+                      }
+                    }}
                   >
                     <i className="fa-brands fa-whatsapp"></i> {t('order.btnSubmit')}
                   </a>
                   <p style={{ fontSize: '0.76rem', color: 'var(--text-light)', textAlign: 'center', marginTop: '0.65rem' }}>
                     {t('order.whatsappInfo')}
                   </p>
+
+                  <div className="order-disclaimer-box">
+                    <p>{t('order.disclaimerText')}</p>
+                  </div>
                 </div>
               </div>
             )}

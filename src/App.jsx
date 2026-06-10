@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ThemeProvider } from './context/ThemeContext'
@@ -15,8 +15,20 @@ import PrescriptionOrder from './sections/PrescriptionOrder'
 import Doctors from './sections/Doctors'
 import FAQ from './sections/FAQ'
 import Contact from './sections/Contact'
+import TermsModal from './components/layout/TermsModal'
 
 export default function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalTab, setModalTab] = useState('terms')
+
+  useEffect(() => {
+    const handleOpenModal = (e) => {
+      setModalTab(e.detail?.tab || 'terms')
+      setModalOpen(true)
+    }
+    window.addEventListener('open-terms-modal', handleOpenModal)
+    return () => window.removeEventListener('open-terms-modal', handleOpenModal)
+  }, [])
   useEffect(() => {
     // Refresh ScrollTrigger once DOM layout has settled and images might have loaded
     const refreshTriggers = () => {
@@ -83,6 +95,7 @@ export default function App() {
           <WhatsAppWidget />
           <ShareWidget />
           <ScrollToTop />
+          <TermsModal isOpen={modalOpen} onClose={() => setModalOpen(false)} initialTab={modalTab} />
         </motion.div>
       </LanguageProvider>
     </ThemeProvider>

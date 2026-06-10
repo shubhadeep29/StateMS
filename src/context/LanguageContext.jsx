@@ -109,6 +109,11 @@ const translations = {
       step3: "হোয়াটসঅ্যাপে অর্ডার পাঠাতে 'অর্ডার পাঠান' বোতামে ক্লিক করুন এবং ফাইলটি সেন্ড করুন।",
       infoVerify: "ডেলিভারির আগে সমস্ত অর্ডার একজন লাইসেন্সপ্রাপ্ত ফার্মাসিস্ট দ্বারা সতর্কতার সাথে যাচাই করা হয়।",
       whatsappInfo: "হোয়াটসঅ্যাপে মেসেজ পাঠানোর পর ফাইলটি চ্যাটে সংযুক্ত করতে ভুলবেন না!",
+      consentLabel: "আমি ব্যবহার বিধি এবং গোপনীয়তা নীতি মেনে চলছি এবং ওষুধ অর্ডারের জন্য প্রেসক্রিপশন ও তথ্যের ব্যবহারে সম্মতি জানাচ্ছি।",
+      termsLink: "ব্যবহার বিধি",
+      privacyLink: "গোপনীয়তা নীতি",
+      whatsappManualAlert: "গুরুত্বপূর্ণ: ব্রাউজার সিকিউরিটির কারণে, আপনার প্রেসক্রিপশন ফাইলটি স্বয়ংক্রিয়ভাবে হোয়াটসঅ্যাপে যাবে না। নিচের বোতামে ক্লিক করার পর যখন হোয়াটসঅ্যাপ চ্যাট ওপেন হবে, তখন ফাইলটি নিজের ফোন বা কম্পিউটার থেকে ম্যানুয়ালি চ্যাটের সাথে সংযুক্ত (Attach) করে পাঠাতে হবে।",
+      disclaimerText: "দাবিত্যাগ (Disclaimer): এই ওয়েবসাইটটি কেবল অর্ডার সংক্রান্ত অনুসন্ধানের সুবিধা দেয়। সকল অর্ডার ডেলিভারি বা সংগ্রহের পূর্বে আমাদের রেজিস্টার্ড ফার্মাসিস্ট দ্বারা প্রেসক্রিপশনটি শারীরিকভাবে যাচাই করা হবে। আমরা কোনো বেআইনি বা প্রেসক্রিপশন ছাড়া নিষিদ্ধ ওষুধ বিক্রি করি না।",
       validation: {
         noFile: "অনুগ্রহ করে প্রথমে প্রেসক্রিপশন ফাইল আপলোড করুন!",
         invalidType: "অসমর্থিত ফাইল ফর্ম্যাট। অনুগ্রহ করে কেবল ইমেজ ফাইল (JPG, PNG) বা PDF আপলোড করুন।",
@@ -166,6 +171,7 @@ const translations = {
       desc: "কালিয়াগঞ্জের প্রাণকেন্দ্রে অবস্থিত আপনার বিশ্বস্ত স্বাস্থ্যসেবা অংশীদার। আমরা আসল প্রেসক্রিপশন ওষুধ সরবরাহ করি এবং বিশেষজ্ঞ ওপিডি ক্লিনিক পরিচালনা করি।",
       links: "গুরুত্বপূর্ণ লিঙ্ক",
       contact: "যোগাযোগ",
+      termsPrivacy: "ব্যবহার বিধি ও গোপনীয়তা নীতি",
       copyright: "© ২০২৬ এম/এস স্টেট মেডিসিন শপ। সর্বস্বত্ব সংরক্ষিত।"
     }
   },
@@ -275,6 +281,11 @@ const translations = {
       step3: "Click 'Order via WhatsApp' to open WhatsApp and attach the prescription image.",
       infoVerify: "All orders are hand-verified by a licensed pharmacist before dispensing.",
       whatsappInfo: "Remember to attach the prescription image in WhatsApp after sending!",
+      consentLabel: "I agree to the Terms of Service & Privacy Policy, and consent to share my prescription and details for ordering.",
+      termsLink: "Terms of Service",
+      privacyLink: "Privacy Policy",
+      whatsappManualAlert: "IMPORTANT: Due to browser security restrictions, your prescription file cannot be automatically attached. After clicking the button below to open WhatsApp, please manually attach/send the file from your device to complete your order!",
+      disclaimerText: "Disclaimer: This website only facilitates order inquiries. All prescription orders are subject to physical verification by our registered pharmacist before dispensing. We do not dispense illegal or restricted substances without prescription validation.",
       validation: {
         noFile: "Please upload a prescription file first!",
         invalidType: "Unsupported file format. Please upload images (JPG, PNG) or PDFs only.",
@@ -332,6 +343,7 @@ const translations = {
       desc: "Your trusted healthcare partner located in the center of Kaliyaganj. We provide genuine prescription medicines and run a specialist doctor OPD clinic.",
       links: "Quick Links",
       contact: "Contact Details",
+      termsPrivacy: "Terms & Privacy Policy",
       copyright: "© 2026 M/S State Medicine Shop. All rights reserved."
     }
   }

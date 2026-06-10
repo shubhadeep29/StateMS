@@ -77,6 +77,17 @@ export default function Footer() {
             <li><a href="#doctors" onClick={(e) => handleLinkClick(e, '#doctors')}>{t('nav.doctors')}</a></li>
             <li><a href="#faq" onClick={(e) => handleLinkClick(e, '#faq')}>{t('nav.faq')}</a></li>
             <li><a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')}>{t('nav.contact')}</a></li>
+            <li>
+              <a 
+                href="#terms" 
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.dispatchEvent(new CustomEvent('open-terms-modal', { detail: { tab: 'terms' } }))
+                }}
+              >
+                {t('footer.termsPrivacy')}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
