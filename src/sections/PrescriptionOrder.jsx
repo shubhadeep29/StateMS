@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { trackEvent } from '../utils/analytics'
 
 export default function PrescriptionOrder() {
   const [file, setFile] = useState(null)
@@ -308,6 +309,16 @@ export default function PrescriptionOrder() {
                     onClick={(e) => {
                       if (!consentChecked) {
                         e.preventDefault()
+                      } else {
+                        trackEvent('prescription_order_submit', {
+                          event_category: 'Order',
+                          event_label: 'WhatsApp Order Submit',
+                          has_file: !!file,
+                          file_type: file ? file.type : 'none',
+                          has_address: !!address.trim(),
+                          has_name: !!patientName.trim(),
+                          language: language
+                        })
                       }
                     }}
                   >

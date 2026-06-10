@@ -1,4 +1,5 @@
 import { useLanguage } from '../../context/LanguageContext'
+import { trackEvent } from '../../utils/analytics'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -37,10 +38,25 @@ export default function Footer() {
             {t('footer.desc')}
           </p>
           <div className="social-links">
-            <a href="https://www.facebook.com/SMEDICINESHOP22?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="Facebook Page">
+            <a 
+              href="https://www.facebook.com/SMEDICINESHOP22?mibextid=ZbWKwL" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-btn" 
+              aria-label="Facebook Page"
+              onClick={() => trackEvent('facebook_click', { event_category: 'Social', event_label: 'Footer' })}
+            >
               <i className="fa-brands fa-facebook-f"></i>
             </a>
-            <a href="https://wa.me/917501482099" target="_blank" rel="noopener noreferrer" className="social-btn" aria-label="WhatsApp Instant Chat" style={{ background: '#25D366', color: 'white' }}>
+            <a 
+              href="https://wa.me/917501482099" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-btn" 
+              aria-label="WhatsApp Instant Chat" 
+              style={{ background: '#25D366', color: 'white' }}
+              onClick={() => trackEvent('whatsapp_click', { event_category: 'Social', event_label: 'Footer' })}
+            >
               <i className="fa-brands fa-whatsapp"></i>
             </a>
           </div>
@@ -56,8 +72,18 @@ export default function Footer() {
             <li>
               <i className="fa-solid fa-phone"></i>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                <a href="tel:+918145555232">+91 81455 55232</a>
-                <a href="tel:+917501482099">+91 75014 82099</a>
+                <a 
+                  href="tel:+918145555232"
+                  onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Footer', phone_number: '+918145555232' })}
+                >
+                  +91 81455 55232
+                </a>
+                <a 
+                  href="tel:+917501482099"
+                  onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Footer', phone_number: '+917501482099' })}
+                >
+                  +91 75014 82099
+                </a>
               </div>
             </li>
             <li>
@@ -97,11 +123,11 @@ export default function Footer() {
           <p style={{ fontSize: '0.84rem', color: '#6b8296', lineHeight: 1.6 }} className="footer-credits">
             {t('language') === 'bn' ? (
               <>
-                তৈরি ও রক্ষণাবেক্ষণে <br className="mobile-only-br" /> দ্বারা <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">শুভদীপ চৌধুরী</a></strong>
+                তৈরি ও রক্ষণাবেক্ষণে <br className="mobile-only-br" /> দ্বারা <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link" onClick={() => trackEvent('portfolio_click', { event_category: 'Credits', event_label: 'Footer' })}>শুভদীপ চৌধুরী</a></strong>
               </>
             ) : (
               <>
-                Built & maintained <br className="mobile-only-br" /> by <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link">Shubhadeep Chowdhury</a></strong>
+                Built & maintained <br className="mobile-only-br" /> by <br className="mobile-only-br" /> <strong><a href="https://shubhadeep29.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} className="footer-portfolio-link" onClick={() => trackEvent('portfolio_click', { event_category: 'Credits', event_label: 'Footer' })}>Shubhadeep Chowdhury</a></strong>
               </>
             )}
           </p>

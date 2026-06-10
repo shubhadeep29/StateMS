@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
+import { initGA } from './utils/analytics'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
@@ -20,6 +21,10 @@ import TermsModal from './components/layout/TermsModal'
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalTab, setModalTab] = useState('terms')
+
+  useEffect(() => {
+    initGA()
+  }, [])
 
   useEffect(() => {
     const handleOpenModal = (e) => {

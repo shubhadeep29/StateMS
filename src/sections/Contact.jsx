@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
+import { trackEvent } from '../utils/analytics'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -49,7 +50,13 @@ export default function Contact() {
                 <p style={{ whiteSpace: 'pre-line' }}>
                   {t('contact.addressVal')}
                 </p>
-                <a href="https://maps.google.com/?q=State+Medicine+Shop+Kaliyaganj" target="_blank" rel="noopener noreferrer" className="maps-link">
+                <a 
+                  href="https://maps.google.com/?q=State+Medicine+Shop+Kaliyaganj" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="maps-link"
+                  onClick={() => trackEvent('maps_click', { event_category: 'Contact', event_label: 'Contact Section' })}
+                >
                   <i className="fa-solid fa-map-location-dot"></i> {t('contact.mapsBtn')}
                 </a>
               </div>
@@ -61,9 +68,22 @@ export default function Contact() {
                 <h3>{t('contact.phoneTitle')}</h3>
                 <p>{t('contact.phoneDesc')}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.5rem' }}>
-                  <a href="tel:+918145555232" style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}>+91 81455 55232</a>
-                  <a href="tel:+917501482099" style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}>+91 75014 82099</a>
+                  <a 
+                    href="tel:+918145555232" 
+                    style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}
+                    onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Contact Section', phone_number: '+918145555232' })}
+                  >
+                    +91 81455 55232
+                  </a>
+                  <a 
+                    href="tel:+917501482099" 
+                    style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}
+                    onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Contact Section', phone_number: '+917501482099' })}
+                  >
+                    +91 75014 82099
+                  </a>
                 </div>
+
               </div>
             </div>
             
