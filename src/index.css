@@ -1582,8 +1582,23 @@ section>.container {
     margin-bottom: 1.5rem;
 }
 
+.footer-logo-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-left: -10px;
+    margin-right: -2px;
+    transition: all 0.3s ease;
+}
+
 .footer-logo .logo-title {
     color: white;
+    font-size: 1.45rem;
+}
+
+.footer-logo .logo-subtitle {
+    color: var(--primary-light);
+    font-size: 0.72rem;
 }
 
 .footer-logo .logo-icon {
@@ -2061,6 +2076,21 @@ section>.container {
         font-size: 1.9rem;
     }
 
+    .footer-logo-img {
+        width: 56px;
+        height: 56px;
+        margin-left: -12px;
+        margin-right: -2px;
+    }
+
+    .footer-logo .logo-title {
+        font-size: 1.35rem;
+    }
+
+    .footer-logo .logo-subtitle {
+        font-size: 0.68rem;
+    }
+
     .nav {
         position: fixed;
         top: 0;
@@ -2238,6 +2268,21 @@ section>.container {
 
     .logo-subtitle {
         font-size: 0.6rem;
+    }
+
+    .footer-logo-img {
+        width: 48px;
+        height: 48px;
+        margin-left: -10px;
+        margin-right: -2px;
+    }
+
+    .footer-logo .logo-title {
+        font-size: 1.25rem;
+    }
+
+    .footer-logo .logo-subtitle {
+        font-size: 0.62rem;
     }
 
     .header-actions {
