@@ -104,8 +104,8 @@ export default function Nav() {
           transition: 'transform 0.1s cubic-bezier(0.1, 0.8, 0.3, 1)'
         }}
       />
-      <header
-        className="header"
+      <header 
+        className={`header ${isShrunk ? 'shrunk' : ''}`}
         style={{
           backgroundColor: isShrunk ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
           boxShadow: isShrunk ? 'var(--shadow-sm)' : 'none',
