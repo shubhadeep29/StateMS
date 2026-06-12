@@ -88,7 +88,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-envelope"></i>
-              <span>statemedicineshop@gmail.com</span>
+              <span>statemedicineshop22@gmail.com</span>
             </li>
           </ul>
         </div>
