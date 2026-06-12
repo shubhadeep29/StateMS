@@ -69,13 +69,6 @@ export default function Contact() {
                 <p>{t('contact.phoneDesc')}</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.5rem' }}>
                   <a 
-                    href="tel:+918145555232" 
-                    style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}
-                    onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Contact Section', phone_number: '+918145555232' })}
-                  >
-                    +91 81455 55232
-                  </a>
-                  <a 
                     href="tel:+917501482099" 
                     style={{ fontWeight: 600, color: 'var(--primary)', fontSize: '1.1rem' }}
                     onClick={() => trackEvent('phone_click', { event_category: 'Contact', event_label: 'Contact Section', phone_number: '+917501482099' })}

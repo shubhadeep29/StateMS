@@ -148,7 +148,7 @@ const translations = {
       q3: "আমরা কি জরুরি বা অপ্রতুল ওষুধ অর্ডার করতে পারি?",
       a3: "অবশ্যই। কোনো বিশেষ ওষুধ আমাদের স্টকে না থাকলে, আমরা সাধারণত ২৪ ঘন্টার মধ্যে তা সরাসরি লাইসেন্সপ্রাপ্ত ডিস্ট্রিবিউটর বা কোম্পানি থেকে সংগ্রহ করে দিই। আপনি হোয়াটসঅ্যাপে আমাদের সাথে যোগাযোগ করে আপনার চাহিদা জানাতে পারেন।",
       q4: "ডাক্তার দেখানোর বুকিং কীভাবে করা যাবে?",
-      a4: "আপনি ডক্টরস সেকশনে সংশ্লিষ্ট ডাক্তারের কার্ডের নিচে থাকা 'হোয়াটসঅ্যাপে স্লট বুক করুন' বোতামে ক্লিক করে আমাদের সাথে যোগাযোগ করতে পারেন। অথবা সরাসরি আমাদের ফোন নম্বর +91 81455 55232 / +91 75014 82099 নম্বরে কল করে স্লট বুক করতে পারেন।",
+      a4: "আপনি ডক্টরস সেকশনে সংশ্লিষ্ট ডাক্তারের কার্ডের নিচে থাকা 'হোয়াটসঅ্যাপে স্লট বুক করুন' বোতামে ক্লিক করে আমাদের সাথে যোগাযোগ করতে পারেন। অথবা সরাসরি আমাদের ফোন নম্বর +91 75014 82099 নম্বরে কল করে স্লট বুক করতে পারেন।",
       q5: "পেমেন্টের কী কী মাধ্যম গ্রহণযোগ্য?",
       a5: "আমরা নগদ অর্থ (Cash on Delivery), UPI (PhonePe, Google Pay, Paytm, Amazon Pay), এবং সরাসরি কিউআর কোড স্ক্যান করে অনলাইন পেমেন্ট গ্রহণ করি।"
     },
@@ -320,7 +320,7 @@ const translations = {
       q3: "Can we order rare or non-stocked medicines?",
       a3: "Absolutely. If a medicine is not currently in stock, we will procure it directly from licensed pharmaceutical distributors within 24 hours. You can send us your requirements over WhatsApp to initiate the procurement.",
       q4: "How do I book a visiting doctor's appointment?",
-      a4: "You can book by clicking 'Book Slot on WhatsApp' under the doctor's profile card in the schedule section, or by calling our direct helpline numbers (+91 81455 55232 / +91 75014 82099) directly.",
+      a4: "You can book by clicking 'Book Slot on WhatsApp' under the doctor's profile card in the schedule section, or by calling our direct helpline number (+91 75014 82099) directly.",
       q5: "What payment methods do you accept?",
       a5: "We accept Cash on Delivery (COD), mobile UPI (PhonePe, GPay, Paytm, BHIM), and direct in-store QR code payments."
     },
