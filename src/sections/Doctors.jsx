@@ -8,7 +8,7 @@ export default function Doctors() {
   const doctorsDatabase = [
     {
       name: "Dr. Anisha Banerjee",
-      qualification: language === 'bn' 
+      qualification: language === 'bn'
         ? "এমবিবিএস (অনার্স), এমডি, ডিভিএল (ত্বক ও চর্মরোগ বিশেষজ্ঞ)"
         : "MBBS (Hons), MD, DVL (Dermatologist & Cosmetologist)",
       specialty: language === 'bn'
@@ -47,6 +47,21 @@ export default function Doctors() {
         : "Daily, 5:00 PM onwards",
       fee: t('doctors.feeVal'),
       category: "gynae"
+    },
+    {
+      name: "Dr. M.D. F. Kabir",
+      qualification: language === 'bn'
+        ? "এম.বি.বি.এস (ডাব্লুবিইউএইচএস), এম.এস (অর্থপেডিক্স), রেজি নং-৭৩৯৭৭"
+        : "MBBS (WBUHS), MS (Orthopedics), Reg No-73977",
+      specialty: language === 'bn'
+        ? "অর্থপেডিক্স (অস্থি বিশেষজ্ঞ)"
+        : "Orthopedics / Bone Specialist",
+      schedule: language === 'bn'
+        ? "বিস্তারিত জানতে যোগাযোগ করুন"
+        : "Contact for details",
+      fee: t('doctors.feeVal'),
+      category: "orthopedics",
+      bannerImage: "/assets/dr_kabir_banner.jpeg"
     }
   ]
 
@@ -59,6 +74,7 @@ export default function Doctors() {
     { id: 'medicine', label: t('doctors.categories.medicine') },
     { id: 'gynae', label: t('doctors.categories.gynae') },
     { id: 'dermatology', label: t('doctors.categories.dermatology') },
+    { id: 'orthopedics', label: t('doctors.categories.orthopedics') },
   ]
 
   return (
@@ -99,20 +115,26 @@ export default function Doctors() {
               const bookingMsg = language === 'bn'
                 ? `হ্যালো এম/এস স্টেট মেডিসিন শপ, আমি ডাক্তার ${doc.name} (${doc.specialty})-এর চেম্বারে দেখানোর জন্য একটি বুকিং স্লট পেতে চাই। অনুগ্রহ করে আমাকে পরবর্তী উপলব্ধ সময় জানান।`
                 : `Hello M/S State Medicine Shop, I would like to book a clinic consultation slot for Dr. ${doc.name} (${doc.specialty}). Please inform me about the next available timing.`
-              
+
               const whatsappLink = `https://wa.me/917501482099?text=${encodeURIComponent(bookingMsg)}`
 
               return (
-                <div key={index} className="doctor-card glass-card">
-                  <div className="doc-info-header">
-                    <div className="doc-avatar-large">
-                      <i className="fa-solid fa-user-doctor"></i>
+                <div key={index} className={`doctor-card glass-card ${doc.bannerImage ? 'doctor-banner-card' : ''}`}>
+                  {doc.bannerImage ? (
+                    <div className="doc-banner-container" style={{ width: '100%', marginBottom: '15px', borderRadius: '12px', overflow: 'hidden', border: '2px solid rgba(255, 255, 255, 0.5)' }}>
+                      <img src={doc.bannerImage} alt={`Banner for ${doc.name}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
                     </div>
-                    <div className="doc-meta">
-                      <h3>{doc.name}</h3>
-                      <span className="doc-qual">{doc.qualification}</span>
+                  ) : (
+                    <div className="doc-info-header">
+                      <div className="doc-avatar-large">
+                        <i className="fa-solid fa-user-doctor"></i>
+                      </div>
+                      <div className="doc-meta">
+                        <h3>{doc.name}</h3>
+                        <span className="doc-qual">{doc.qualification}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <div className="doc-details-list">
                     <div className="doc-detail-item">
                       <i className="fa-solid fa-stethoscope"></i>

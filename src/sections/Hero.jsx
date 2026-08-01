@@ -1,7 +1,21 @@
+import { useState, useEffect } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 export default function Hero() {
   const { t } = useLanguage()
+
+  const heroImages = [
+    `${import.meta.env.BASE_URL}assets/pharmacy_hero.png`,
+    '/assets/dr_kabir_banner.jpeg'
+  ]
+  const [currentImgIndex, setCurrentImgIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImgIndex((prev) => (prev + 1) % heroImages.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
 
   const handleOrderClick = (e) => {
     e.preventDefault()
@@ -39,7 +53,7 @@ export default function Hero() {
           <p className="hero-desc">
             {t('hero.desc')}
           </p>
-          
+
           <div className="quick-info-pills">
             <span className="info-pill"><i className="fa-solid fa-location-dot"></i> {t('hero.pillAddress')}</span>
             <span className="info-pill"><i className="fa-regular fa-clock"></i> {t('hero.pillTime')}</span>
@@ -57,7 +71,7 @@ export default function Hero() {
               <i className="fa-brands fa-whatsapp"></i> {t('hero.btnWhatsapp')}
             </a>
           </div>
-          
+
           <div className="trust-indicators">
             <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustGenuine')}</div>
             <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustPharmacist')}</div>
@@ -65,15 +79,29 @@ export default function Hero() {
             <div className="trust-item"><i className="fa-solid fa-circle-check"></i> {t('hero.trustDoctors')}</div>
           </div>
         </div>
-        
+
         <div className="hero-image-wrapper">
           <div className="hero-image-glow"></div>
-          <img 
-            src={`${import.meta.env.BASE_URL}assets/pharmacy_hero.png`} 
-            alt="State Medicine Shop Interior Storefront" 
-            className="hero-image" 
-            id="heroImage" 
-          />
+          <div className="hero-slider" style={{ display: 'grid', alignItems: 'center', justifyItems: 'center' }}>
+            {heroImages.map((src, idx) => (
+              <img
+                key={src}
+                src={src}
+                alt="State Medicine Shop"
+                className="hero-image"
+                id={idx === 0 ? "heroImage" : undefined}
+                style={{
+                  gridArea: '1 / 1',
+                  opacity: idx === currentImgIndex ? 1 : 0,
+                  transition: 'opacity 0.8s ease-in-out',
+                  width: '100%',
+                  height: idx === 0 ? '100%' : 'auto',
+                  objectFit: idx === 0 ? 'cover' : 'contain',
+                  backgroundColor: 'transparent'
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

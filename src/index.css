@@ -694,7 +694,6 @@ section>.container {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
     object-fit: cover;
-    aspect-ratio: 4/3;
     border: 5px solid white;
     animation: float 6s ease-in-out infinite;
 }
@@ -1289,6 +1288,13 @@ section>.container {
     box-shadow: var(--shadow-md);
 }
 
+.doctor-banner-card {
+    grid-column: 1 / -1;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .doc-info-header {
     display: flex;
     gap: 1.15rem;
@@ -1470,13 +1476,14 @@ section>.container {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
     gap: 4rem;
+    align-items: stretch;
 }
 
 .contact-info-cards {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .contact-card {
@@ -1545,7 +1552,7 @@ section>.container {
 
 .map-container {
     height: 100%;
-    min-height: 440px;
+    min-height: 100%;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
@@ -1691,9 +1698,9 @@ section>.container {
 }
 
 .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.5rem;
     list-style: none;
 }
 
@@ -1701,9 +1708,10 @@ section>.container {
     color: #94a3b8;
     font-size: 0.92rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.4rem;
     transition: var(--transition-base);
+    line-height: 1.4;
 }
 
 .footer-links a::before {
@@ -1711,6 +1719,8 @@ section>.container {
     font-size: 1.1rem;
     color: var(--primary-light);
     transition: transform var(--transition-base);
+    line-height: 1;
+    margin-top: 0.1rem;
 }
 
 .footer-links a:hover {
@@ -2481,15 +2491,16 @@ section>.container {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(rgba(15, 76, 129, 0.1) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(rgba(15, 76, 129, 0.25) 2px, transparent 2px);
     background-size: 28px 28px;
+    background-attachment: fixed;
     pointer-events: none;
     z-index: 0;
 }
 
 /* Add grid pattern color contrast for light backgrounds */
 .bg-teal-light.bg-grid-pattern::before {
-    background-image: radial-gradient(rgba(255, 109, 0, 0.08) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(rgba(255, 109, 0, 0.2) 2px, transparent 2px);
 }
 
 /* ===== REPEATING MEDICAL SVG PATTERN ===== */
@@ -2504,16 +2515,15 @@ section>.container {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.085'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.085' transform='rotate(-2.5%2080%2080)%20scale(1.12)'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 160px 160px;
+    background-attachment: fixed;
     pointer-events: none;
     z-index: 0;
-    transform: rotate(-2.5deg) scale(1.12);
-    transform-origin: center;
 }
 
 #doctors.bg-medical-pattern::before {
-    transform: rotate(45deg) scale(1.45);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.085' transform='rotate(45%2080%2080)%20scale(1.45)'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ===== SECTION SVG DIVIDERS ===== */

@@ -129,7 +129,8 @@ const translations = {
         all: "সব ডাক্তার",
         medicine: "সাধারণ মেডিসিন",
         gynae: "স্ত্রীরোগ ও প্রসূতি",
-        dermatology: "চর্ম ও চর্মরোগ"
+        dermatology: "চর্ম ও চর্মরোগ",
+        orthopedics: "অস্থি ও অর্থপেডিক্স"
       },
       labelFee: "পরামর্শ ফি",
       feeVal: "কাউন্টারে যোগাযোগ করুন",
@@ -301,7 +302,8 @@ const translations = {
         all: "All Specialties",
         medicine: "General Medicine",
         gynae: "Gynecology",
-        dermatology: "Dermatology"
+        dermatology: "Dermatology",
+        orthopedics: "Orthopedics"
       },
       labelFee: "Consultation Fee",
       feeVal: "Contact Counter",
