@@ -35,11 +35,12 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="hero bg-medical-pattern">
-      {/* Floating background decorations */}
-      <div className="bg-floating-icon icon-1"><Icon name="plus" /></div>
-      <div className="bg-floating-icon icon-2"><Icon name="prescription-bottle-medical" /></div>
-      <div className="bg-floating-icon icon-3"><Icon name="heart-pulse" /></div>
+    <section id="home" className="hero">
+      <div className="hero-mesh" aria-hidden="true">
+        <span className="mesh-blob mesh-a" />
+        <span className="mesh-blob mesh-b" />
+        <span className="mesh-blob mesh-c" />
+      </div>
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -51,7 +52,10 @@ export default function Hero() {
           <div className="hero-badge">
             <Icon name="shield-halved" /> {t('hero.badge')}
           </div>
-          <h1>{t('hero.title1')} <br />{t('hero.title2')}</h1>
+          <h1 className="hero-title">
+            <span className="hero-line">{t('hero.title1')}</span>{' '}
+            <span className="hero-line">{t('hero.title2')}</span>
+          </h1>
           <p className="hero-desc">
             {t('hero.desc')}
           </p>

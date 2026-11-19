@@ -15,10 +15,6 @@ export default function Contact() {
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-2" style={{ top: '10%', right: '15%' }}></div>
 
-      {/* Floating background decorations */}
-      <div className="bg-floating-icon icon-4" style={{ top: '15%', left: '42%', opacity: 0.03 }}><Icon name="map-location-dot" /></div>
-      <div className="bg-floating-icon icon-2" style={{ bottom: '15%', left: '8%', opacity: 0.03 }}><Icon name="envelope-open-text" /></div>
-
       <div className="container">
         <div className="section-header reveal">
           <div className="section-eyebrow"><Icon name="map-location-dot" /> {t('contact.eyebrow')}</div>

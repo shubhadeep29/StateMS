@@ -1,11 +1,28 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { flushSync } from 'react-dom'
 import { useLanguage } from '../context/LanguageContext'
 import ResponsiveImage, { assetUrl } from '../components/ResponsiveImage'
 import Icon from '../components/Icon'
+import useReveal from '../hooks/useReveal'
 
 export default function Doctors() {
   const [activeCategory, setActiveCategory] = useState('all')
   const { language, t } = useLanguage()
+  const sectionRef = useRef(null)
+  useReveal(sectionRef)
+
+  // Morph cards between filters with the View Transitions API where supported
+  const selectCategory = (id) => {
+    if (id === activeCategory) return
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    if (!document.startViewTransition || reduced) {
+      setActiveCategory(id)
+      return
+    }
+    document.startViewTransition(() => {
+      flushSync(() => setActiveCategory(id))
+    })
+  }
 
   const doctorsDatabase = [
     {
@@ -80,9 +97,7 @@ export default function Doctors() {
   ]
 
   return (
-    <section id="doctors" className="bg-medical-pattern">
-      {/* Floating background icon */}
-      <div className="bg-floating-icon icon-5"><Icon name="stethoscope" /></div>
+    <section id="doctors" ref={sectionRef} className="bg-medical-pattern">
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -90,13 +105,13 @@ export default function Doctors() {
       </svg>
 
       <div className="container">
-        <div className="section-header">
+        <div className="section-header reveal">
           <div className="section-eyebrow"><Icon name="user-doctor" /> {t('doctors.eyebrow')}</div>
           <h2>{t('doctors.title1')} <span className="highlight">{t('doctors.title2')}</span></h2>
           <p>{t('doctors.subtitle')}</p>
         </div>
 
-        <div className="doctor-widget">
+        <div className="doctor-widget reveal">
           <div className="doctor-tabs" role="tablist" aria-label="Doctor Specialties">
             {categories.map(cat => (
               <button
@@ -105,7 +120,7 @@ export default function Doctors() {
                 role="tab"
                 aria-selected={activeCategory === cat.id}
                 aria-controls="doctorGrid"
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => selectCategory(cat.id)}
               >
                 {cat.label}
               </button>
@@ -121,7 +136,11 @@ export default function Doctors() {
               const whatsappLink = `https://wa.me/917501482099?text=${encodeURIComponent(bookingMsg)}`
 
               return (
-                <div key={index} className="doctor-card glass-card">
+                <div
+                  key={doc.name}
+                  className="doctor-card glass-card"
+                  style={{ viewTransitionName: `doc-${doc.category}` }}
+                >
                   <div className="doc-info-header">
                     <div className="doc-avatar-large">
                       <Icon name="user-doctor" />

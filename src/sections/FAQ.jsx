@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
 import Icon from '../components/Icon'
+import useReveal from '../hooks/useReveal'
 
 export default function FAQ() {
   const [openId, setOpenId] = useState(null)
   const { t } = useLanguage()
+  const sectionRef = useRef(null)
+  useReveal(sectionRef)
 
   const faqData = [
     { id: 'faq1', question: t('faq.q1'), answer: t('faq.a1') },
@@ -20,13 +23,9 @@ export default function FAQ() {
   }
 
   return (
-    <section id="faq" className="bg-teal-light">
+    <section ref={sectionRef} id="faq" className="bg-teal-light">
       {/* Blurred background orb */}
       <div className="bg-blur-orb orb-3" style={{ top: '20%', left: '10%' }}></div>
-
-      {/* Floating background decorations */}
-      <div className="bg-floating-icon icon-3" style={{ opacity: 0.04 }}><Icon name="circle-question" /></div>
-      <div className="bg-floating-icon icon-1" style={{ opacity: 0.04, top: '40%', left: '5%' }}><Icon name="comments" /></div>
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-bg-color" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -34,13 +33,13 @@ export default function FAQ() {
       </svg>
 
       <div className="container">
-        <div className="section-header">
+        <div className="section-header reveal">
           <div className="section-eyebrow"><Icon name="circle-question" /> {t('faq.eyebrow')}</div>
           <h2>{t('faq.title1')} <span className="highlight">{t('faq.title2')}</span></h2>
           <p>{t('faq.subtitle')}</p>
         </div>
         
-        <div className="faq-grid">
+        <div className="faq-grid reveal">
           {faqData.map((faq) => {
             const isOpen = openId === faq.id
             return (

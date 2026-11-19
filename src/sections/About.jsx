@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext'
 import ResponsiveImage from '../components/ResponsiveImage'
 import Icon from '../components/Icon'
 import useReveal from '../hooks/useReveal'
+import CountUp from '../components/CountUp'
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -65,7 +66,7 @@ export default function About() {
               width={1024}
               height={416}
               alt={galleryImages[activeImageIndex].alt}
-              className="about-image"
+              className="about-image parallax-soft"
             />
             <div className="floating-card">
               <div className="expert-icon"><Icon name="camera" /></div>
@@ -103,17 +104,17 @@ export default function About() {
           <div className="stats-grid">
             <div className="stat-box glass-card reveal">
               <Icon name="business-time" />
-              <h3>{t('about.stats.years')}</h3>
+              <h3><CountUp text={t('about.stats.years')} /></h3>
               <p>{t('about.stats.yearsSub')}</p>
             </div>
             <div className="stat-box glass-card reveal">
               <Icon name="heart-pulse" />
-              <h3>{t('about.stats.authentic')}</h3>
+              <h3><CountUp text={t('about.stats.authentic')} /></h3>
               <p>{t('about.stats.authenticSub')}</p>
             </div>
             <div className="stat-box glass-card reveal">
               <Icon name="users" />
-              <h3>{t('about.stats.patients')}</h3>
+              <h3><CountUp text={t('about.stats.patients')} /></h3>
               <p>{t('about.stats.patientsSub')}</p>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { trackEvent } from '../utils/analytics'
 import Icon from '../components/Icon'
+import useReveal from '../hooks/useReveal'
 
 export default function PrescriptionOrder() {
   const [file, setFile] = useState(null)
@@ -11,6 +12,8 @@ export default function PrescriptionOrder() {
   const [consentChecked, setConsentChecked] = useState(false)
   const fileInputRef = useRef(null)
   const { language, t } = useLanguage()
+  const sectionRef = useRef(null)
+  useReveal(sectionRef)
 
   const formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes'
@@ -98,9 +101,7 @@ export default function PrescriptionOrder() {
   const isPdf = file && file.type.includes('pdf')
 
   return (
-    <section id="order" className="bg-teal-light">
-      {/* Floating background icon */}
-      <div className="bg-floating-icon icon-4"><Icon name="notes-medical" /></div>
+    <section ref={sectionRef} id="order" className="bg-teal-light">
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-white" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -108,13 +109,13 @@ export default function PrescriptionOrder() {
       </svg>
 
       <div className="container">
-        <div className="section-header section-header--left">
+        <div className="section-header section-header--left reveal">
           <div className="section-eyebrow"><Icon name="whatsapp" /> {t('order.eyebrow')}</div>
           <h2>{t('order.title1')} <span className="highlight">{t('order.title2')}</span></h2>
           <p>{t('order.subtitle')}</p>
         </div>
         
-        <div className="prescription-container">
+        <div className="prescription-container reveal">
           <div className="prescription-info-text">
             <h3>{t('order.stepTitle')}</h3>
             <p>{t('order.stepDesc')}</p>

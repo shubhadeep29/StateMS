@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { scheduleGA } from './utils/analytics'
+import useSpotlight from './hooks/useSpotlight'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
@@ -19,6 +20,7 @@ import TermsModal from './components/layout/TermsModal'
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false)
   const [modalTab, setModalTab] = useState('terms')
+  useSpotlight()
 
   useEffect(() => {
     scheduleGA()
@@ -31,26 +33,6 @@ export default function App() {
     }
     window.addEventListener('open-terms-modal', handleOpenModal)
     return () => window.removeEventListener('open-terms-modal', handleOpenModal)
-  }, [])
-  useEffect(() => {
-    let frameId
-    const handleMouseMove = (e) => {
-      frameId = requestAnimationFrame(() => {
-        const icons = document.querySelectorAll('.bg-floating-icon')
-        const x = (window.innerWidth / 2 - e.clientX) / 25
-        const y = (window.innerHeight / 2 - e.clientY) / 25
-        icons.forEach((icon, index) => {
-          const factor = (index % 3 + 1) * 0.45
-          icon.style.setProperty('--mx', `${x * factor}px`)
-          icon.style.setProperty('--my', `${y * factor}px`)
-        })
-      })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-      cancelAnimationFrame(frameId)
-    }
   }, [])
 
   return (
