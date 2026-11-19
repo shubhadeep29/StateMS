@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react'
-import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
 import ResponsiveImage from '../components/ResponsiveImage'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Icon from '../components/Icon'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../hooks/useReveal'
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -40,19 +36,7 @@ export default function About() {
     }
   ]
 
-  useGSAP(() => {
-    gsap.from('.gsap-reveal', {
-      opacity: 0,
-      y: 28,
-      stagger: 0.12,
-      duration: 0.9,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 90%',
-      },
-    })
-  }, { scope: sectionRef })
+  useReveal(sectionRef)
 
   return (
     <section id="about" ref={sectionRef} className="about bg-teal-light">
@@ -65,7 +49,7 @@ export default function About() {
       </svg>
 
       <div className="container about-container">
-        <div className="about-image-wrapper gsap-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div className="about-image-wrapper reveal" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ position: 'relative', width: '100%' }}>
             <ResponsiveImage
               key={galleryImages[activeImageIndex].src}
@@ -99,29 +83,29 @@ export default function About() {
         </div>
         
         <div className="about-text">
-          <h2 className="gsap-reveal">{t('about.eyebrow')} <span className="highlight">{t('about.title2')}</span></h2>
-          <p className="lead-text gsap-reveal">
+          <h2 className="reveal">{t('about.eyebrow')} <span className="highlight">{t('about.title2')}</span></h2>
+          <p className="lead-text reveal">
             {t('about.lead')}
           </p>
-          <p className="gsap-reveal">
+          <p className="reveal">
             {t('about.p1')}
           </p>
-          <p className="gsap-reveal">
+          <p className="reveal">
             {t('about.p2')}
           </p>
           
           <div className="stats-grid">
-            <div className="stat-box glass-card gsap-reveal">
+            <div className="stat-box glass-card reveal">
               <Icon name="business-time" />
               <h4>{t('about.stats.years')}</h4>
               <p>{t('about.stats.yearsSub')}</p>
             </div>
-            <div className="stat-box glass-card gsap-reveal">
+            <div className="stat-box glass-card reveal">
               <Icon name="heart-pulse" />
               <h4>{t('about.stats.authentic')}</h4>
               <p>{t('about.stats.authenticSub')}</p>
             </div>
-            <div className="stat-box glass-card gsap-reveal">
+            <div className="stat-box glass-card reveal">
               <Icon name="users" />
               <h4>{t('about.stats.patients')}</h4>
               <p>{t('about.stats.patientsSub')}</p>

@@ -12,8 +12,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/gsap') || id.includes('node_modules/framer-motion') || id.includes('@gsap')) return 'animation'
-          if (id.includes('node_modules/@mui') || id.includes('@emotion')) return 'mui'
+          if (id.includes('node_modules/framer-motion')) return 'animation'
           if (id.includes('node_modules/react') || id.includes('react-router-dom')) return 'react-vendor'
         },
       },

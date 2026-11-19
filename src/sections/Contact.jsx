@@ -1,30 +1,14 @@
 import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
 import { trackEvent } from '../utils/analytics'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Icon from '../components/Icon'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../hooks/useReveal'
 
 export default function Contact() {
   const sectionRef = useRef(null)
   const { t } = useLanguage()
 
-  useGSAP(() => {
-    gsap.from('.gsap-reveal', {
-      opacity: 0,
-      y: 28,
-      stagger: 0.12,
-      duration: 0.9,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 95%',
-      },
-    })
-  }, { scope: sectionRef })
+  useReveal(sectionRef)
 
   return (
     <section id="contact" ref={sectionRef} className="bg-grid-pattern">
@@ -36,7 +20,7 @@ export default function Contact() {
       <div className="bg-floating-icon icon-2" style={{ bottom: '15%', left: '8%', opacity: 0.03 }}><Icon name="envelope-open-text" /></div>
 
       <div className="container">
-        <div className="section-header gsap-reveal">
+        <div className="section-header reveal">
           <div className="section-eyebrow"><Icon name="map-location-dot" /> {t('contact.eyebrow')}</div>
           <h2>{t('contact.title1')} <span className="highlight">{t('contact.title2')}</span></h2>
           <p>{t('contact.subtitle')}</p>
@@ -44,7 +28,7 @@ export default function Contact() {
         
         <div className="contact-grid">
           <div className="contact-info-cards">
-            <div className="contact-card glass-card gsap-reveal">
+            <div className="contact-card glass-card reveal">
               <div className="card-icon"><Icon name="location-dot" /></div>
               <div>
                 <h3>{t('contact.addressTitle')}</h3>
@@ -63,7 +47,7 @@ export default function Contact() {
               </div>
             </div>
             
-            <div className="contact-card glass-card gsap-reveal">
+            <div className="contact-card glass-card reveal">
               <div className="card-icon"><Icon name="phone" /></div>
               <div>
                 <h3>{t('contact.phoneTitle')}</h3>
@@ -81,7 +65,7 @@ export default function Contact() {
               </div>
             </div>
             
-            <div className="contact-card glass-card gsap-reveal">
+            <div className="contact-card glass-card reveal">
               <div className="card-icon"><Icon name="business-time" /></div>
               <div>
                 <h3>{t('contact.hoursTitle')}</h3>
@@ -92,7 +76,7 @@ export default function Contact() {
             </div>
           </div>
           
-          <div className="map-container gsap-reveal" style={{ overflow: 'hidden' }}>
+          <div className="map-container reveal" style={{ overflow: 'hidden' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3596.173062334005!2d88.32875537538234!3d25.64008847743141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDM4JzI0LjMiTiA4OMKwMTknNTIuOCJF!5e0!3m2!1sen!2sin!4v1717758364713!5m2!1sen!2sin"
               width="100%"

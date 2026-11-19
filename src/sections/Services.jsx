@@ -1,29 +1,13 @@
 import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Icon from '../components/Icon'
-
-gsap.registerPlugin(ScrollTrigger)
+import useReveal from '../hooks/useReveal'
 
 export default function Services() {
   const sectionRef = useRef(null)
   const { t } = useLanguage()
 
-  useGSAP(() => {
-    gsap.from('.gsap-reveal', {
-      opacity: 0,
-      y: 28,
-      stagger: 0.12,
-      duration: 0.9,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 90%',
-      },
-    })
-  }, { scope: sectionRef })
+  useReveal(sectionRef)
 
   const renderServiceItem = (key) => {
     const text = t(key)
@@ -57,7 +41,7 @@ export default function Services() {
       </svg>
 
       <div className="container">
-        <div className="section-header gsap-reveal">
+        <div className="section-header reveal">
           <div className="section-eyebrow"><Icon name="heart-pulse" /> {t('services.eyebrow')}</div>
           <h2>{t('services.title1')} <span className="highlight">{t('services.title2')}</span></h2>
           <p>{t('services.desc')}</p>
@@ -65,7 +49,7 @@ export default function Services() {
         
         <div className="services-grid">
           {/* Card 1: Medicines & OTC */}
-          <div className="service-card glass-card gsap-reveal">
+          <div className="service-card glass-card reveal">
             <div className="service-card-header">
               <div className="service-card-icon"><Icon name="pills" /></div>
               <h3>{t('services.card1.title')}</h3>
@@ -79,7 +63,7 @@ export default function Services() {
           </div>
 
           {/* Card 2: Clinical Care */}
-          <div className="service-card glass-card gsap-reveal">
+          <div className="service-card glass-card reveal">
             <div className="service-card-header">
               <div className="service-card-icon"><Icon name="stethoscope" /></div>
               <h3>{t('services.card2.title')}</h3>
@@ -93,7 +77,7 @@ export default function Services() {
           </div>
 
           {/* Card 3: Support Services */}
-          <div className="service-card glass-card gsap-reveal">
+          <div className="service-card glass-card reveal">
             <div className="service-card-header">
               <div className="service-card-icon"><Icon name="truck-fast" /></div>
               <h3>{t('services.card3.title')}</h3>

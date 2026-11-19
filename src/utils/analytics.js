@@ -47,6 +47,22 @@ export const initGA = () => {
 };
 
 /**
+ * Loads Google Analytics after the page has finished loading and the browser is idle,
+ * so the gtag script never competes with first paint.
+ */
+export const scheduleGA = () => {
+  const run = () => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(initGA, { timeout: 4000 })
+    } else {
+      setTimeout(initGA, 2000)
+    }
+  }
+  if (document.readyState === 'complete') run()
+  else window.addEventListener('load', run, { once: true })
+}
+
+/**
  * Tracks a custom event in Google Analytics.
  * @param {string} eventName - Name of the event (e.g. 'whatsapp_click')
  * @param {object} eventParams - Optional parameters for the event

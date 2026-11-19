@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ThemeProvider } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
-import { initGA } from './utils/analytics'
+import { scheduleGA } from './utils/analytics'
 import Nav from './components/layout/Nav'
 import Footer from './components/layout/Footer'
 import WhatsAppWidget from './components/layout/WhatsAppWidget'
@@ -23,7 +21,7 @@ export default function App() {
   const [modalTab, setModalTab] = useState('terms')
 
   useEffect(() => {
-    initGA()
+    scheduleGA()
   }, [])
 
   useEffect(() => {
@@ -34,27 +32,6 @@ export default function App() {
     window.addEventListener('open-terms-modal', handleOpenModal)
     return () => window.removeEventListener('open-terms-modal', handleOpenModal)
   }, [])
-  useEffect(() => {
-    // Refresh ScrollTrigger once DOM layout has settled and images might have loaded
-    const refreshTriggers = () => {
-      ScrollTrigger.refresh()
-    }
-    
-    window.addEventListener('load', refreshTriggers)
-
-    // Run refreshes at intervals to handle delayed layout shifts
-    const t1 = setTimeout(refreshTriggers, 200)
-    const t2 = setTimeout(refreshTriggers, 800)
-    const t3 = setTimeout(refreshTriggers, 2000)
-
-    return () => {
-      window.removeEventListener('load', refreshTriggers)
-      clearTimeout(t1)
-      clearTimeout(t2)
-      clearTimeout(t3)
-    }
-  }, [])
-
   useEffect(() => {
     let frameId
     const handleMouseMove = (e) => {
@@ -79,11 +56,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+        <>
           <Nav />
           <main>
             <Hero />
@@ -94,14 +67,12 @@ export default function App() {
             <FAQ />
             <Contact />
           </main>
-          <motion.div>
-            <Footer />
-          </motion.div>
+          <Footer />
           <WhatsAppWidget />
           <ShareWidget />
           <ScrollToTop />
           <TermsModal isOpen={modalOpen} onClose={() => setModalOpen(false)} initialTab={modalTab} />
-        </motion.div>
+        </>
       </LanguageProvider>
     </ThemeProvider>
   )
