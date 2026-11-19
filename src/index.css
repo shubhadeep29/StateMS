@@ -3324,3 +3324,10 @@ section>.container {
         margin-bottom: 0;
     }
 }
+
+@media (max-width: 768px) {
+    .contact-list li:has(> a),
+    .contact-list li:has(> div > a) {
+        align-items: center;
+    }
+}
