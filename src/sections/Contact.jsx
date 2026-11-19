@@ -12,8 +12,6 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={sectionRef} className="bg-grid-pattern">
-      {/* Blurred background orb */}
-      <div className="bg-blur-orb orb-2" style={{ top: '10%', right: '15%' }}></div>
 
       <div className="container">
         <div className="section-header reveal">

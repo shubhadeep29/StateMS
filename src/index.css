@@ -37,6 +37,8 @@
     --bg-light: #f1f5f9;
     --bg-teal-light: #edf4fa;
     --bg-teal-mid: #e2ebf5;
+    /* Mask that fades background patterns out near section edges */
+    --edge-fade: linear-gradient(to bottom, transparent 0, #000 140px, #000 calc(100% - 140px), transparent 100%);
 
     /* Text */
     --text-main: #334155;
@@ -50,7 +52,7 @@
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(207, 79%, 28%) 0%, hsl(217, 75%, 22%) 100%);
-    --gradient-hero: linear-gradient(165deg, hsl(207, 79%, 97%) 0%, hsl(210, 40%, 98%) 60%, hsl(215, 30%, 99%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(207, 79%, 97%) 0%, hsl(210, 40%, 98%) 70%, var(--bg-color) 100%);
     --gradient-section: linear-gradient(180deg, hsl(207, 60%, 97%) 0%, hsl(207, 40%, 99%) 100%);
     --gradient-accent: linear-gradient(135deg, var(--accent) 0%, hsl(28, 100%, 45%) 100%);
     --gradient-footer: linear-gradient(180deg, hsl(220, 40%, 9%) 0%, hsl(220, 45%, 7%) 100%);
@@ -167,6 +169,14 @@ a {
 
 .bg-teal-light {
     background-color: var(--bg-teal-light);
+    /* Tint fades into the page colour at both edges so sections join seamlessly */
+    background-image: linear-gradient(
+        to bottom,
+        var(--bg-color) 0,
+        var(--bg-teal-light) 160px,
+        var(--bg-teal-light) calc(100% - 160px),
+        var(--bg-color) 100%
+    );
 }
 
 /* ===== HIGHLIGHT ===== */
@@ -2517,38 +2527,6 @@ section>.container {
 
 
 
-/* ===== BLURRED BACKGROUND ORBS ===== */
-.bg-blur-orb {
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.12;
-}
-
-.orb-1 {
-    top: -10%;
-    right: -10%;
-    background: var(--accent);
-}
-
-.orb-2 {
-    bottom: -15%;
-    left: -5%;
-    background: var(--primary);
-}
-
-.orb-3 {
-    top: 30%;
-    right: 5%;
-    background: var(--primary-light);
-    width: 250px;
-    height: 250px;
-    opacity: 0.08;
-}
 
 /* ===== RADIAL GRID BACKGROUND PATTERN ===== */
 .bg-grid-pattern {
@@ -2562,16 +2540,18 @@ section>.container {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(rgba(15, 76, 129, 0.25) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(15, 76, 129, 0.16) 1.6px, transparent 1.6px);
     background-size: 28px 28px;
-    background-attachment: fixed;
+    background-attachment: scroll;
+    -webkit-mask-image: var(--edge-fade);
+    mask-image: var(--edge-fade);
     pointer-events: none;
     z-index: 0;
 }
 
 /* Add grid pattern color contrast for light backgrounds */
 .bg-teal-light.bg-grid-pattern::before {
-    background-image: radial-gradient(rgba(255, 109, 0, 0.2) 2px, transparent 2px);
+    background-image: radial-gradient(rgba(255, 109, 0, 0.14) 1.6px, transparent 1.6px);
 }
 
 /* ===== REPEATING MEDICAL SVG PATTERN ===== */
@@ -2588,49 +2568,15 @@ section>.container {
     bottom: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.085' transform='rotate(-2.5%2080%2080)%20scale(1.12)'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
     background-size: 160px 160px;
-    background-attachment: fixed;
+    background-attachment: scroll;
+    -webkit-mask-image: var(--edge-fade);
+    mask-image: var(--edge-fade);
     pointer-events: none;
     z-index: 0;
 }
 
 #doctors.bg-medical-pattern::before {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%230F4C81' fill-opacity='0.085' transform='rotate(45%2080%2080)%20scale(1.45)'%3E%3Cpath d='M22 15h10v3H22zm-4 3h18v18H18zm7 6h4v6h-4zm-1 2h6v2h-6zM75 12c3 4-3 8 0 12c3 4-3 8 0 12m6-24c-3 4 3 8 0 12c-3 4 3 8 0 12m-4.5-20h3m0 8h-3m0 8h3m50.5-20h4v12h-4zm-2 12h8v2h-8zm4 2v6m-1 0h2m1-20v-4M22 72h4v-4h2v4h4v2h-4v4h-2v-4h-4zm43 3h8l3-8l3 16l3-12l2 4h8m32-5a6 6 0 1 0 12 0a6 6 0 1 0-12 0m1.8-1.8l8.4 8.4M25 110c-3 0-5 2-5 5v3c0 3 2 5 5 5s5-2 5-5v-3c0-3-2-5-5-5zm7 8h4v-5h-4zm-2-3h2v8h-2zM78 122h4v-4h2v4h4v2h-4v4h-2v-4h-4zm37 3l12-12l3 3l-12 12zm4-4l1.5-1.5m.5 3.5l1.5-1.5'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* ===== SECTION SVG DIVIDERS ===== */
-.section-divider {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 48px;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.divider-bottom {
-    bottom: -1px;
-}
-
-.divider-top {
-    top: -1px;
-}
-
-@media (max-width: 768px) {
-    .section-divider {
-        height: 28px;
-    }
-}
-
-.divider-teal-light {
-    color: var(--bg-teal-light);
-}
-
-.divider-white {
-    color: white;
-}
-
-.divider-bg-color {
-    color: var(--bg-color);
 }
 
 /* ===== LANGUAGE LOADER OVERLAY ===== */
@@ -3263,6 +3209,8 @@ section>.container {
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
 }
 
 .mesh-blob {

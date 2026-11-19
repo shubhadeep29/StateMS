@@ -103,10 +103,6 @@ export default function PrescriptionOrder() {
   return (
     <section ref={sectionRef} id="order" className="bg-teal-light">
 
-      {/* Bottom Wave Divider */}
-      <svg className="section-divider divider-bottom divider-white" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,50 C480,20 960,70 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
-      </svg>
 
       <div className="container">
         <div className="section-header section-header--left reveal">

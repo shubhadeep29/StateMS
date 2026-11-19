@@ -24,13 +24,7 @@ export default function FAQ() {
 
   return (
     <section ref={sectionRef} id="faq" className="bg-teal-light">
-      {/* Blurred background orb */}
-      <div className="bg-blur-orb orb-3" style={{ top: '20%', left: '10%' }}></div>
 
-      {/* Bottom Wave Divider */}
-      <svg className="section-divider divider-bottom divider-bg-color" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,40 C320,70 640,70 960,40 C1280,10 1360,10 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
-      </svg>
 
       <div className="container">
         <div className="section-header reveal">

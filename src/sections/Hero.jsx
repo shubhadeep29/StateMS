@@ -42,10 +42,6 @@ export default function Hero() {
         <span className="mesh-blob mesh-c" />
       </div>
 
-      {/* Bottom Wave Divider */}
-      <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,0 C320,40 420,40 720,20 C1020,0 1120,0 1440,30 L1440,74 L0,74 Z" fill="currentColor"></path>
-      </svg>
 
       <div className="container hero-container">
         <div className="hero-text">
