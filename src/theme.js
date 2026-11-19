@@ -36,37 +36,37 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Plus Jakarta Sans", "Inter", sans-serif',
+    fontFamily: '"Plus Jakarta Sans", "Inter", "Hind Siliguri", sans-serif',
     h1: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 700,
     },
     h2: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 700,
     },
     h3: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 600,
     },
     h4: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 600,
     },
     h5: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 600,
     },
     h6: {
-      fontFamily: '"Outfit", sans-serif',
+      fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
       fontWeight: 600,
     },
     body1: {
-      fontFamily: '"Plus Jakarta Sans", sans-serif',
+      fontFamily: '"Plus Jakarta Sans", "Hind Siliguri", sans-serif',
       lineHeight: 1.6,
     },
     body2: {
-      fontFamily: '"Plus Jakarta Sans", sans-serif',
+      fontFamily: '"Plus Jakarta Sans", "Hind Siliguri", sans-serif',
       lineHeight: 1.5,
     },
   },
@@ -78,7 +78,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 30,
-          fontFamily: '"Outfit", sans-serif',
+          fontFamily: '"Outfit", "Hind Siliguri", sans-serif',
           textTransform: 'none',
           fontWeight: 600,
         },
