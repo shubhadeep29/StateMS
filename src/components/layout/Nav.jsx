@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import ResponsiveImage from '../ResponsiveImage'
 import Icon from '../Icon'
@@ -58,19 +58,37 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const closeMenu = useCallback(() => {
+    setIsMobileOpen(false)
+    document.body.style.overflow = ''
+  }, [])
+
   const toggleMobileMenu = () => {
-    setIsMobileOpen(!isMobileOpen)
-    if (!isMobileOpen) {
-      document.body.style.overflow = 'hidden'
+    if (isMobileOpen) {
+      closeMenu()
     } else {
-      document.body.style.overflow = ''
+      setIsMobileOpen(true)
+      document.body.style.overflow = 'hidden'
     }
   }
 
+  // Close the drawer on Escape and when the viewport grows past the mobile breakpoint
+  useEffect(() => {
+    if (!isMobileOpen) return
+    const onKey = (e) => { if (e.key === 'Escape') closeMenu() }
+    const mq = window.matchMedia('(min-width: 769px)')
+    const onMq = (e) => { if (e.matches) closeMenu() }
+    window.addEventListener('keydown', onKey)
+    mq.addEventListener('change', onMq)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      mq.removeEventListener('change', onMq)
+    }
+  }, [isMobileOpen, closeMenu])
+
   const handleLinkClick = (e, id) => {
     e.preventDefault()
-    setIsMobileOpen(false)
-    document.body.style.overflow = ''
+    closeMenu()
 
     const targetElement = document.querySelector(id)
     if (targetElement) {
@@ -87,6 +105,20 @@ export default function Nav() {
       })
     }
   }
+
+  const sections = ['home', 'about', 'services', 'order', 'doctors', 'faq', 'contact']
+  const renderLinks = () =>
+    sections.map((id) => (
+      <a
+        key={id}
+        href={`#${id}`}
+        className={activeSection === id ? 'active' : ''}
+        aria-current={activeSection === id ? 'true' : undefined}
+        onClick={(e) => handleLinkClick(e, `#${id}`)}
+      >
+        {t(`nav.${id}`)}
+      </a>
+    ))
 
   return (
     <>
@@ -106,7 +138,7 @@ export default function Nav() {
           transition: 'transform 0.1s cubic-bezier(0.1, 0.8, 0.3, 1)'
         }}
       />
-      <header 
+      <header
         className={`header ${isShrunk ? 'shrunk' : ''}`}
         style={{
           backgroundColor: isShrunk ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.75)',
@@ -139,65 +171,81 @@ export default function Nav() {
             </div>
           </a>
 
-          <nav className={`nav ${isMobileOpen ? 'active' : ''}`} id="mainNavigation" aria-label="Main Navigation">
-            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#home')}>{t('nav.home')}</a>
-            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#about')}>{t('nav.about')}</a>
-            <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#services')}>{t('nav.services')}</a>
-            <a href="#order" className={activeSection === 'order' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#order')}>{t('nav.order')}</a>
-            <a href="#doctors" className={activeSection === 'doctors' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#doctors')}>{t('nav.doctors')}</a>
-            <a href="#faq" className={activeSection === 'faq' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#faq')}>{t('nav.faq')}</a>
-            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => handleLinkClick(e, '#contact')}>{t('nav.contact')}</a>
-
-            {/* Mobile Language Toggle */}
-            <div className="mobile-lang-switcher">
-              <button
-                onClick={() => { setLanguage('bn'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
-                className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
-              >
-                ব
-              </button>
-              <button
-                onClick={() => { setLanguage('en'); setIsMobileOpen(false); document.body.style.overflow = ''; }}
-                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-              >
-                E
-              </button>
-            </div>
+          <nav className="nav" id="mainNavigation" aria-label="Main Navigation">
+            {renderLinks()}
           </nav>
 
           <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            {/* Desktop Language Toggle */}
             <div className="lang-switcher">
               <button
                 onClick={() => setLanguage('bn')}
                 className={`lang-btn ${language === 'bn' ? 'active' : ''}`}
+                aria-pressed={language === 'bn'}
               >
                 বাংলা
               </button>
               <button
                 onClick={() => setLanguage('en')}
                 className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+                aria-pressed={language === 'en'}
+                lang="en"
               >
                 EN
               </button>
             </div>
 
-            <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn">
-              <Icon name="phone" /> {t('nav.call')}
+            <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn" aria-label={t('nav.call')}>
+              <Icon name="phone" /> <span className="cta-label">{t('nav.call')}</span>
             </a>
           </div>
 
           <button
             className="mobile-menu-btn"
             id="mobileMenuBtn"
-            aria-label="Toggle menu"
+            aria-label="Open menu"
             aria-expanded={isMobileOpen}
+            aria-controls="mobileDrawer"
             onClick={toggleMobileMenu}
           >
-            <Icon name={isMobileOpen ? 'xmark' : 'bars'} />
+            <Icon name="bars" />
           </button>
         </div>
       </header>
+
+      <div
+        className={`drawer-overlay ${isMobileOpen ? 'open' : ''}`}
+        onClick={closeMenu}
+        aria-hidden="true"
+      />
+      <nav
+        className={`mobile-drawer ${isMobileOpen ? 'open' : ''}`}
+        id="mobileDrawer"
+        aria-label="Mobile Navigation"
+        aria-hidden={!isMobileOpen}
+        inert={!isMobileOpen}
+      >
+        <button className="drawer-close" aria-label="Close menu" onClick={closeMenu}>
+          <Icon name="xmark" />
+        </button>
+        <div className="drawer-links">{renderLinks()}</div>
+        <div className="drawer-lang">
+          <button
+            onClick={() => { setLanguage('bn'); closeMenu() }}
+            className={`drawer-lang-btn ${language === 'bn' ? 'active' : ''}`}
+            aria-pressed={language === 'bn'}
+          >
+            বাংলা
+          </button>
+          <button
+            onClick={() => { setLanguage('en'); closeMenu() }}
+            className={`drawer-lang-btn ${language === 'en' ? 'active' : ''}`}
+            aria-pressed={language === 'en'}
+            lang="en"
+          >
+            English
+          </button>
+        </div>
+      </nav>
     </>
   )
 }
