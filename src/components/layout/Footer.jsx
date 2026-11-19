@@ -1,6 +1,7 @@
 import { useLanguage } from '../../context/LanguageContext'
 import { trackEvent } from '../../utils/analytics'
 import ResponsiveImage from '../ResponsiveImage'
+import ShareWidget from './ShareWidget'
 import Icon from '../Icon'
 
 export default function Footer() {
@@ -65,6 +66,7 @@ export default function Footer() {
             >
               <Icon name="whatsapp" />
             </a>
+            <ShareWidget variant="inline" />
           </div>
         </div>
 

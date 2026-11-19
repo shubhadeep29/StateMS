@@ -1636,8 +1636,9 @@ section>.container {
 }
 
 .social-btn {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.07);
     display: flex;
@@ -3085,5 +3086,45 @@ section>.container {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+}
+
+/* Footer share button (ShareWidget variant="inline") */
+.share-inline {
+    position: relative;
+}
+
+.share-inline .share-toast {
+    bottom: calc(100% + 8px);
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: none;
+}
+
+/* Mobile: only the WhatsApp FAB floats; share lives in the footer */
+@media (max-width: 768px) {
+    .share-widget-container,
+    .floating-scroll-top {
+        display: none !important;
+    }
+
+    .floating-whatsapp {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
+        font-size: 1.85rem;
+    }
+
+    .footer-bottom {
+        padding-bottom: 84px;
+    }
+}
+
+/* Keep footer links clear of the desktop FAB stack where the container reaches the viewport edge */
+@media (min-width: 769px) and (max-width: 1400px) {
+    .footer .container {
+        padding-right: 96px;
     }
 }
