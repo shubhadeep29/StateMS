@@ -108,7 +108,7 @@ export default function PrescriptionOrder() {
       </svg>
 
       <div className="container">
-        <div className="section-header">
+        <div className="section-header section-header--left">
           <div className="section-eyebrow"><Icon name="whatsapp" /> {t('order.eyebrow')}</div>
           <h2>{t('order.title1')} <span className="highlight">{t('order.title2')}</span></h2>
           <p>{t('order.subtitle')}</p>

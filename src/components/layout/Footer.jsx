@@ -37,7 +37,7 @@ export default function Footer() {
               className="footer-logo-img"
             />
             <div className="logo-text">
-              <span className="logo-title">STATE</span>
+              <span className="logo-title">M/S STATE</span>
               <span className="logo-subtitle" style={{ color: 'var(--primary-light)' }}>MEDICINE SHOP</span>
             </div>
           </a>

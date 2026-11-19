@@ -33,6 +33,12 @@ export default function About() {
       alt: 'Doctor Consultation Chamber',
       label: t('about.gallery.chamber'),
       badge: t('about.badges.chamber')
+    },
+    {
+      src: 'pharmacy_hero',
+      alt: 'M/S State Medicine Shop Storefront',
+      label: t('about.gallery.storeFront'),
+      badge: t('about.badges.storeFront')
     }
   ]
 
@@ -97,17 +103,17 @@ export default function About() {
           <div className="stats-grid">
             <div className="stat-box glass-card reveal">
               <Icon name="business-time" />
-              <h4>{t('about.stats.years')}</h4>
+              <h3>{t('about.stats.years')}</h3>
               <p>{t('about.stats.yearsSub')}</p>
             </div>
             <div className="stat-box glass-card reveal">
               <Icon name="heart-pulse" />
-              <h4>{t('about.stats.authentic')}</h4>
+              <h3>{t('about.stats.authentic')}</h3>
               <p>{t('about.stats.authenticSub')}</p>
             </div>
             <div className="stat-box glass-card reveal">
               <Icon name="users" />
-              <h4>{t('about.stats.patients')}</h4>
+              <h3>{t('about.stats.patients')}</h3>
               <p>{t('about.stats.patientsSub')}</p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
-import { assetUrl } from '../components/ResponsiveImage'
+import ResponsiveImage, { assetUrl } from '../components/ResponsiveImage'
 import Icon from '../components/Icon'
 
 export default function Doctors() {
@@ -129,13 +129,27 @@ export default function Doctors() {
                     <div className="doc-meta">
                       <h3>{doc.name}</h3>
                       <span className="doc-qual">{doc.qualification}</span>
-                      {doc.posterUrl && (
-                        <a href={doc.posterUrl} target="_blank" rel="noopener noreferrer" className="doc-poster-link">
-                          {t('doctors.viewPoster')}
-                        </a>
-                      )}
                     </div>
                   </div>
+                  {doc.posterUrl && (
+                    <a
+                      href={doc.posterUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="doc-poster-thumb"
+                      aria-label={`${t('doctors.viewPoster')}: ${doc.name}`}
+                    >
+                      <ResponsiveImage
+                        name="dr_kabir_banner"
+                        widths={[800]}
+                        sizes="(max-width: 768px) 90vw, 360px"
+                        width={800}
+                        height={480}
+                        alt={`Poster for ${doc.name}`}
+                      />
+                      <span className="doc-poster-caption">{t('doctors.viewPoster')}</span>
+                    </a>
+                  )}
                   <div className="doc-details-list">
                     <div className="doc-detail-item">
                       <Icon name="stethoscope" />

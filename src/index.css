@@ -19,6 +19,8 @@
     /* Accent: Vibrant Orange */
     --accent: hsl(24, 100%, 50%);
     --accent-light: hsl(24, 100%, 95%);
+    /* Darker orange for white text on small elements (4.5:1) */
+    --accent-strong: hsl(24, 100%, 36%);
 
     /* Semantic */
     --success: hsl(142, 65%, 32%);
@@ -345,7 +347,7 @@ a {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: var(--primary-light);
+    color: hsl(var(--primary-h), 75%, 36%);
     text-transform: uppercase;
     margin-top: 3px;
 }
@@ -417,7 +419,7 @@ a {
 }
 
 .lang-btn.active {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: #fff !important;
 }
 
@@ -496,7 +498,7 @@ section>.container {
 }
 
 .section-header p {
-    color: var(--text-light);
+    color: #4b5a6e;
     font-size: 1.08rem;
     line-height: 1.7;
 }
@@ -786,7 +788,7 @@ section>.container {
     border: 1px solid var(--border-color);
     padding: 0.35rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.74rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-main);
     cursor: pointer;
@@ -880,7 +882,7 @@ section>.container {
     display: block;
 }
 
-.stat-box h4 {
+.stat-box h3 {
     font-size: 1.9rem;
     font-weight: 800;
     color: var(--text-dark);
@@ -1289,16 +1291,31 @@ section>.container {
     box-shadow: var(--shadow-md);
 }
 
-.doc-poster-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    margin-top: 0.35rem;
-    font-size: 0.82rem;
+.doc-poster-thumb {
+    position: relative;
+    display: block;
+    margin-top: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color-glow);
+}
+
+.doc-poster-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.doc-poster-caption {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(15, 23, 42, 0.82);
+    color: #fff;
+    font-size: 0.78rem;
     font-weight: 700;
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
 }
 
 .doc-info-header {
@@ -1611,7 +1628,7 @@ section>.container {
 
 .footer-logo .logo-subtitle {
     color: var(--primary-light);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
 }
 
 .footer-logo .logo-icon {
@@ -2106,7 +2123,7 @@ section>.container {
     }
 
     .footer-logo .logo-subtitle {
-        font-size: 0.64rem;
+        font-size: 0.75rem;
     }
 
     .nav {
@@ -2215,8 +2232,8 @@ section>.container {
     }
 
     .drawer-lang-btn.active {
-        background: var(--accent);
-        border-color: var(--accent);
+        background: var(--accent-strong);
+        border-color: var(--accent-strong);
         color: #fff;
     }
 
@@ -2254,7 +2271,7 @@ section>.container {
     }
 
     section {
-        padding: 72px 0;
+        padding: 56px 0;
     }
 
     .hero {
@@ -2271,16 +2288,47 @@ section>.container {
     }
 
     .hero-buttons {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
         width: 100%;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons .btn {
         width: 100%;
+        min-height: 48px;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.92rem;
+    }
+
+    .hero-buttons .btn-primary {
+        grid-column: 1 / -1;
+    }
+
+    .quick-info-pills {
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .quick-info-pills .info-pill {
+        width: auto;
+        min-height: 32px;
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+        gap: 0.4rem;
     }
 
     .trust-indicators {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        padding-top: 1.25rem;
+        text-align: left;
+    }
+
+    .trust-item {
+        font-size: 0.82rem;
+        gap: 0.45rem;
     }
 
     .about-text h2 {
@@ -2292,7 +2340,34 @@ section>.container {
     }
 
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-top: 1.75rem;
+    }
+
+    .stat-box {
+        padding: 0.9rem 0.4rem;
+    }
+
+    .stat-box i {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .stat-box h3 {
+        font-size: 1.25rem;
+    }
+
+    .stat-box p {
+        font-size: 0.75rem;
+        letter-spacing: 0;
+        text-transform: none;
+    }
+
+    .gallery-dot-btn {
+        min-height: 44px;
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
     }
 
     .services-grid {
@@ -2313,8 +2388,9 @@ section>.container {
     }
 
     .tab-btn {
-        font-size: 0.82rem;
+        font-size: 0.85rem;
         padding: 0.45rem 1rem;
+        min-height: 44px;
     }
 
     .doctor-cards-grid {
@@ -2385,7 +2461,7 @@ section>.container {
     }
 
     .footer-logo .logo-subtitle {
-        font-size: 0.6rem;
+        font-size: 0.75rem;
     }
 
     .header-actions {
@@ -2403,7 +2479,6 @@ section>.container {
     }
 
     .info-pill {
-        width: 100%;
         justify-content: center;
     }
 
@@ -3126,5 +3201,126 @@ section>.container {
 @media (min-width: 769px) and (max-width: 1400px) {
     .footer .container {
         padding-right: 96px;
+    }
+}
+
+/* Hero: three CTAs on one row on desktop (#19) */
+@media (min-width: 993px) {
+    .hero-buttons {
+        flex-wrap: nowrap;
+        gap: 0.65rem;
+    }
+
+    .hero-buttons .btn-large {
+        padding: 0.9rem 1.25rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+}
+
+/* Order section: left-aligned header breaks the repeated centred pattern (#22) */
+.section-header--left {
+    text-align: left;
+    max-width: 760px;
+    margin-left: 0;
+    padding-left: 1.25rem;
+    border-left: 4px solid var(--accent);
+}
+
+.section-header--left .section-eyebrow {
+    display: none;
+}
+
+/* Mobile density + touch targets (#16, #27) */
+@media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .doctor-card {
+        padding: 1.25rem;
+    }
+
+    .doc-info-header {
+        min-height: 0;
+    }
+
+    .doc-details-list {
+        gap: 0.5rem;
+        padding: 0.75rem 0;
+        margin: 0.9rem 0;
+    }
+
+    .service-card {
+        padding: 1.4rem 1.2rem;
+        gap: 1rem;
+    }
+
+    .contact-card {
+        padding: 1.2rem;
+    }
+
+    .footer {
+        padding-top: 56px;
+    }
+
+    .footer-grid {
+        gap: 2.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-sm,
+    .dropzone button,
+    .prescription-widget button {
+        min-height: 44px;
+    }
+
+    .contact-card a,
+    .contact-list a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .footer-links {
+        gap: 0 0.5rem;
+    }
+
+    .footer-links a {
+        min-height: 44px;
+        align-items: center;
+    }
+
+    .footer-portfolio-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+/* Narrow phones: stack the three hero CTAs so Bengali labels stay on one line */
+@media (max-width: 480px) {
+    .hero-buttons {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .hero-buttons .btn {
+        min-height: 48px;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 88px;
+    }
+
+    .hero-container {
+        gap: 2rem;
+    }
+
+    .trust-indicators {
+        margin-bottom: 0;
     }
 }
