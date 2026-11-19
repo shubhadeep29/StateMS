@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { assetUrl } from '../components/ResponsiveImage'
+import Icon from '../components/Icon'
 
 export default function Doctors() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -81,7 +82,7 @@ export default function Doctors() {
   return (
     <section id="doctors" className="bg-medical-pattern">
       {/* Floating background icon */}
-      <div className="bg-floating-icon icon-5"><i className="fa-solid fa-stethoscope"></i></div>
+      <div className="bg-floating-icon icon-5"><Icon name="stethoscope" /></div>
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-teal-light" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -90,7 +91,7 @@ export default function Doctors() {
 
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow"><i className="fa-solid fa-user-doctor"></i> {t('doctors.eyebrow')}</div>
+          <div className="section-eyebrow"><Icon name="user-doctor" /> {t('doctors.eyebrow')}</div>
           <h2>{t('doctors.title1')} <span className="highlight">{t('doctors.title2')}</span></h2>
           <p>{t('doctors.subtitle')}</p>
         </div>
@@ -123,7 +124,7 @@ export default function Doctors() {
                 <div key={index} className="doctor-card glass-card">
                   <div className="doc-info-header">
                     <div className="doc-avatar-large">
-                      <i className="fa-solid fa-user-doctor"></i>
+                      <Icon name="user-doctor" />
                     </div>
                     <div className="doc-meta">
                       <h3>{doc.name}</h3>
@@ -137,22 +138,22 @@ export default function Doctors() {
                   </div>
                   <div className="doc-details-list">
                     <div className="doc-detail-item">
-                      <i className="fa-solid fa-stethoscope"></i>
+                      <Icon name="stethoscope" />
                       <span>{language === 'bn' ? 'বিশেষত্ব:' : 'Specialty:'} <strong>{doc.specialty}</strong></span>
                     </div>
                     <div className="doc-detail-item">
-                      <i className="fa-regular fa-calendar-check"></i>
+                      <Icon name="calendar-check-regular" />
                       <span>{language === 'bn' ? 'সময়সূচী:' : 'Timings:'} <strong>{doc.schedule}</strong></span>
                     </div>
                     <div className="doc-detail-item">
-                      <i className="fa-solid fa-receipt"></i>
+                      <Icon name="receipt" />
                       <span>{t('doctors.labelFee')}: <strong>{doc.fee}</strong></span>
                     </div>
                   </div>
                   <div className="doc-card-actions">
-                    <span className="clinic-visit-badge"><i className="fa-regular fa-circle-check"></i> {t('doctors.badgeActive')}</span>
+                    <span className="clinic-visit-badge"><Icon name="circle-check-regular" /> {t('doctors.badgeActive')}</span>
                     <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm" style={{ width: '100%' }}>
-                      <i className="fa-brands fa-whatsapp"></i> {language === 'bn' ? 'অ্যাপয়েন্টমেন্ট বুক করুন' : 'Book Appointment'}
+                      <Icon name="whatsapp" /> {language === 'bn' ? 'অ্যাপয়েন্টমেন্ট বুক করুন' : 'Book Appointment'}
                     </a>
                   </div>
                 </div>

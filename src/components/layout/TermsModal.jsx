@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../../context/LanguageContext'
 import { termsData } from '../../data/termsData'
+import Icon from '../Icon'
 
 export default function TermsModal({ isOpen, onClose, initialTab = 'terms' }) {
   const { language } = useLanguage()
@@ -72,7 +73,7 @@ export default function TermsModal({ isOpen, onClose, initialTab = 'terms' }) {
               onClick={onClose}
               aria-label="Close modal"
             >
-              <i className="fa-solid fa-xmark"></i>
+              <Icon name="xmark" />
             </button>
           </div>
 

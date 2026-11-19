@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Icon from '../Icon'
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false)
@@ -28,7 +29,7 @@ export default function ScrollToTop() {
       className={`floating-scroll-top ${visible ? 'visible' : ''}`}
       aria-label="Scroll to Top"
     >
-      <i className="fa-solid fa-chevron-up"></i>
+      <Icon name="chevron-up" />
     </button>
   )
 }

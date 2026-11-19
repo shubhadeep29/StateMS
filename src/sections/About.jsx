@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import ResponsiveImage from '../components/ResponsiveImage'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Icon from '../components/Icon'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -77,7 +78,7 @@ export default function About() {
               className="about-image"
             />
             <div className="floating-card">
-              <div className="expert-icon"><i className="fa-solid fa-camera"></i></div>
+              <div className="expert-icon"><Icon name="camera" /></div>
               <div className="expert-text">{galleryImages[activeImageIndex].badge}</div>
             </div>
           </div>
@@ -111,17 +112,17 @@ export default function About() {
           
           <div className="stats-grid">
             <div className="stat-box glass-card gsap-reveal">
-              <i className="fa-solid fa-business-time"></i>
+              <Icon name="business-time" />
               <h4>{t('about.stats.years')}</h4>
               <p>{t('about.stats.yearsSub')}</p>
             </div>
             <div className="stat-box glass-card gsap-reveal">
-              <i className="fa-solid fa-heart-pulse"></i>
+              <Icon name="heart-pulse" />
               <h4>{t('about.stats.authentic')}</h4>
               <p>{t('about.stats.authenticSub')}</p>
             </div>
             <div className="stat-box glass-card gsap-reveal">
-              <i className="fa-solid fa-users"></i>
+              <Icon name="users" />
               <h4>{t('about.stats.patients')}</h4>
               <p>{t('about.stats.patientsSub')}</p>
             </div>

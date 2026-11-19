@@ -2968,3 +2968,19 @@ section>.container {
     border-top: 1.5px solid var(--border-color);
     background: var(--bg-color);
 }
+/* Inline SVG icons (src/components/Icon.jsx) */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+    line-height: 1;
+    vertical-align: -0.125em;
+    flex-shrink: 0;
+}
+
+.icon svg {
+    height: 1em;
+    width: auto;
+    overflow: visible;
+}

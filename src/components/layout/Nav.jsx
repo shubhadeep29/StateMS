@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import ResponsiveImage from '../ResponsiveImage'
+import Icon from '../Icon'
 
 export default function Nav() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -182,7 +183,7 @@ export default function Nav() {
             </div>
 
             <a href="tel:+917501482099" className="btn btn-primary btn-sm cta-btn">
-              <i className="fa-solid fa-phone"></i> {t('nav.call')}
+              <Icon name="phone" /> {t('nav.call')}
             </a>
           </div>
 
@@ -193,7 +194,7 @@ export default function Nav() {
             aria-expanded={isMobileOpen}
             onClick={toggleMobileMenu}
           >
-            <i className={`fa-solid ${isMobileOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+            <Icon name={isMobileOpen ? 'xmark' : 'bars'} />
           </button>
         </div>
       </header>

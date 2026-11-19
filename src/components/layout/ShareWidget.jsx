@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import Icon from '../Icon'
 
 export default function ShareWidget() {
   const [copied, setCopied] = useState(false)
@@ -45,7 +46,7 @@ export default function ShareWidget() {
         className="floating-share"
         aria-label="Share website link"
       >
-        <i className="fa-solid fa-share-nodes"></i>
+        <Icon name="share-nodes" />
       </button>
       {copied && (
         <div className="share-toast">

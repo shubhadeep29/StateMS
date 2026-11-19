@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { trackEvent } from '../utils/analytics'
+import Icon from '../components/Icon'
 
 export default function PrescriptionOrder() {
   const [file, setFile] = useState(null)
@@ -99,7 +100,7 @@ export default function PrescriptionOrder() {
   return (
     <section id="order" className="bg-teal-light">
       {/* Floating background icon */}
-      <div className="bg-floating-icon icon-4"><i className="fa-solid fa-notes-medical"></i></div>
+      <div className="bg-floating-icon icon-4"><Icon name="notes-medical" /></div>
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-white" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -108,7 +109,7 @@ export default function PrescriptionOrder() {
 
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow"><i className="fa-brands fa-whatsapp"></i> {t('order.eyebrow')}</div>
+          <div className="section-eyebrow"><Icon name="whatsapp" /> {t('order.eyebrow')}</div>
           <h2>{t('order.title1')} <span className="highlight">{t('order.title2')}</span></h2>
           <p>{t('order.subtitle')}</p>
         </div>
@@ -134,7 +135,7 @@ export default function PrescriptionOrder() {
             </div>
             
             <div className="info-pill" style={{ marginTop: '1rem', borderColor: 'rgba(16, 185, 129, 0.25)' }}>
-              <i className="fa-solid fa-circle-info" style={{ color: 'var(--accent)' }}></i>
+              <Icon name="circle-info" style={{ color: 'var(--accent)' }} />
               <span>{t('order.infoVerify')}</span>
             </div>
           </div>
@@ -160,7 +161,7 @@ export default function PrescriptionOrder() {
                   onChange={handleFileChange}
                   style={{ display: 'none' }}
                 />
-                <i className="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                <Icon name="cloud-arrow-up" className="dropzone-icon" />
                 <p>{t('order.dragText')}</p>
                 <span>{t('order.fileNote')}</span>
                 <button 
@@ -180,11 +181,11 @@ export default function PrescriptionOrder() {
                 <div className="file-preview-container" id="filePreviewContainer" style={{ display: 'block' }}>
                   <div className="file-item">
                     <div className="file-details">
-                      <i 
-                        className={`fa-regular ${isPdf ? 'fa-file-pdf' : 'fa-image'}`} 
+                      <Icon
+                        name={isPdf ? 'file-pdf-regular' : 'image-regular'} 
                         id="fileIcon"
                         style={{ color: isPdf ? '#ef4444' : 'var(--primary)' }}
-                      ></i>
+                      />
                       <div>
                         <div className="file-name" id="fileName">{file.name}</div>
                         <div className="file-size" id="fileSize">{formatBytes(file.size)}</div>
@@ -197,14 +198,14 @@ export default function PrescriptionOrder() {
                       aria-label="Remove file"
                       onClick={handleRemoveFile}
                     >
-                      <i className="fa-solid fa-trash-can"></i>
+                      <Icon name="trash-can" />
                     </button>
                   </div>
                 </div>
 
                 <div className="whatsapp-checkout-container" id="whatsappCheckoutContainer" style={{ display: 'block' }}>
                   <div className="info-alert-box">
-                    <i className="fa-solid fa-circle-exclamation"></i>
+                    <Icon name="circle-exclamation" />
                     <p>{t('order.whatsappManualAlert')}</p>
                   </div>
 
@@ -322,7 +323,7 @@ export default function PrescriptionOrder() {
                       }
                     }}
                   >
-                    <i className="fa-brands fa-whatsapp"></i> {t('order.btnSubmit')}
+                    <Icon name="whatsapp" /> {t('order.btnSubmit')}
                   </a>
                   <p style={{ fontSize: '0.76rem', color: 'var(--text-light)', textAlign: 'center', marginTop: '0.65rem' }}>
                     {t('order.whatsappInfo')}

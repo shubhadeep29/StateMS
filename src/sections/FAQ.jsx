@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../context/LanguageContext'
+import Icon from '../components/Icon'
 
 export default function FAQ() {
   const [openId, setOpenId] = useState(null)
@@ -24,8 +25,8 @@ export default function FAQ() {
       <div className="bg-blur-orb orb-3" style={{ top: '20%', left: '10%' }}></div>
 
       {/* Floating background decorations */}
-      <div className="bg-floating-icon icon-3" style={{ opacity: 0.04 }}><i className="fa-solid fa-circle-question"></i></div>
-      <div className="bg-floating-icon icon-1" style={{ opacity: 0.04, top: '40%', left: '5%' }}><i className="fa-solid fa-comments"></i></div>
+      <div className="bg-floating-icon icon-3" style={{ opacity: 0.04 }}><Icon name="circle-question" /></div>
+      <div className="bg-floating-icon icon-1" style={{ opacity: 0.04, top: '40%', left: '5%' }}><Icon name="comments" /></div>
 
       {/* Bottom Wave Divider */}
       <svg className="section-divider divider-bottom divider-bg-color" viewBox="0 0 1440 74" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -34,7 +35,7 @@ export default function FAQ() {
 
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow"><i className="fa-solid fa-circle-question"></i> {t('faq.eyebrow')}</div>
+          <div className="section-eyebrow"><Icon name="circle-question" /> {t('faq.eyebrow')}</div>
           <h2>{t('faq.title1')} <span className="highlight">{t('faq.title2')}</span></h2>
           <p>{t('faq.subtitle')}</p>
         </div>
@@ -51,13 +52,14 @@ export default function FAQ() {
                   onClick={() => toggleFaq(faq.id)}
                 >
                   {faq.question}
-                  <i 
-                    className="fa-solid fa-chevron-down faq-icon"
+                  <Icon
+                    name="chevron-down"
+                    className="faq-icon"
                     style={{
                       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.3s ease'
                     }}
-                  ></i>
+                  />
                 </button>
                 
                 <AnimatePresence initial={false}>

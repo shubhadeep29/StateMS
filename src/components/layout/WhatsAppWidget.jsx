@@ -1,4 +1,5 @@
 import { trackEvent } from '../../utils/analytics'
+import Icon from '../Icon'
 
 export default function WhatsAppWidget() {
   const handleClick = () => {
@@ -17,7 +18,7 @@ export default function WhatsAppWidget() {
       aria-label="Chat with Pharmacist on WhatsApp"
       onClick={handleClick}
     >
-      <i className="fa-brands fa-whatsapp"></i>
+      <Icon name="whatsapp" />
     </a>
   )
 }

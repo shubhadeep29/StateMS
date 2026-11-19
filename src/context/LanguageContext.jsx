@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import Icon from '../components/Icon'
 
 const LanguageContext = createContext()
 
@@ -424,7 +425,7 @@ export function LanguageProvider({ children }) {
         <div className={`language-loader-overlay ${isFadingOut ? 'fade-out' : ''}`}>
           <div className="language-loader-container">
             <div className="language-spinner-ring">
-              <i className="fa-solid fa-heart-pulse"></i>
+              <Icon name="heart-pulse" />
             </div>
             <div className="language-loader-text">
               {pendingLanguage === 'bn' ? 'বাংলা করা হচ্ছে...' : 'Switching to English...'}

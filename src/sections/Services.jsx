@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Icon from '../components/Icon'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,14 +33,14 @@ export default function Services() {
       const normalPart = text.substring(colonIndex + 1)
       return (
         <li>
-          <i className="fa-solid fa-circle-check"></i>
+          <Icon name="circle-check" />
           <div><strong>{boldPart}</strong>{normalPart}</div>
         </li>
       )
     }
     return (
       <li>
-        <i className="fa-solid fa-circle-check"></i>
+        <Icon name="circle-check" />
         <div>{text}</div>
       </li>
     )
@@ -57,7 +58,7 @@ export default function Services() {
 
       <div className="container">
         <div className="section-header gsap-reveal">
-          <div className="section-eyebrow"><i className="fa-solid fa-heart-pulse"></i> {t('services.eyebrow')}</div>
+          <div className="section-eyebrow"><Icon name="heart-pulse" /> {t('services.eyebrow')}</div>
           <h2>{t('services.title1')} <span className="highlight">{t('services.title2')}</span></h2>
           <p>{t('services.desc')}</p>
         </div>
@@ -66,7 +67,7 @@ export default function Services() {
           {/* Card 1: Medicines & OTC */}
           <div className="service-card glass-card gsap-reveal">
             <div className="service-card-header">
-              <div className="service-card-icon"><i className="fa-solid fa-pills"></i></div>
+              <div className="service-card-icon"><Icon name="pills" /></div>
               <h3>{t('services.card1.title')}</h3>
             </div>
             <ul className="service-card-list">
@@ -80,7 +81,7 @@ export default function Services() {
           {/* Card 2: Clinical Care */}
           <div className="service-card glass-card gsap-reveal">
             <div className="service-card-header">
-              <div className="service-card-icon"><i className="fa-solid fa-stethoscope"></i></div>
+              <div className="service-card-icon"><Icon name="stethoscope" /></div>
               <h3>{t('services.card2.title')}</h3>
             </div>
             <ul className="service-card-list">
@@ -94,7 +95,7 @@ export default function Services() {
           {/* Card 3: Support Services */}
           <div className="service-card glass-card gsap-reveal">
             <div className="service-card-header">
-              <div className="service-card-icon"><i className="fa-solid fa-truck-fast"></i></div>
+              <div className="service-card-icon"><Icon name="truck-fast" /></div>
               <h3>{t('services.card3.title')}</h3>
             </div>
             <ul className="service-card-list">

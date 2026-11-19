@@ -1,6 +1,7 @@
 import { useLanguage } from '../../context/LanguageContext'
 import { trackEvent } from '../../utils/analytics'
 import ResponsiveImage from '../ResponsiveImage'
+import Icon from '../Icon'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -51,7 +52,7 @@ export default function Footer() {
               aria-label="Facebook Page"
               onClick={() => trackEvent('facebook_click', { event_category: 'Social', event_label: 'Footer' })}
             >
-              <i className="fa-brands fa-facebook-f"></i>
+              <Icon name="facebook-f" />
             </a>
             <a 
               href="https://wa.me/917501482099" 
@@ -62,7 +63,7 @@ export default function Footer() {
               style={{ background: '#25D366', color: 'white' }}
               onClick={() => trackEvent('whatsapp_click', { event_category: 'Social', event_label: 'Footer' })}
             >
-              <i className="fa-brands fa-whatsapp"></i>
+              <Icon name="whatsapp" />
             </a>
           </div>
         </div>
@@ -71,11 +72,11 @@ export default function Footer() {
           <h4>{t('footer.contact')}</h4>
           <ul className="contact-list">
             <li>
-              <i className="fa-solid fa-location-dot"></i>
+              <Icon name="location-dot" />
               <span>{t('contact.addressVal')}</span>
             </li>
             <li>
-              <i className="fa-solid fa-phone"></i>
+              <Icon name="phone" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <a 
                   href="tel:+917501482099"
@@ -86,7 +87,7 @@ export default function Footer() {
               </div>
             </li>
             <li>
-              <i className="fa-solid fa-envelope"></i>
+              <Icon name="envelope" />
               <span>statemedicineshop22@gmail.com</span>
             </li>
           </ul>

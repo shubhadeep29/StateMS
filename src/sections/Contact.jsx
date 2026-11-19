@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import { trackEvent } from '../utils/analytics'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Icon from '../components/Icon'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -31,12 +32,12 @@ export default function Contact() {
       <div className="bg-blur-orb orb-2" style={{ top: '10%', right: '15%' }}></div>
 
       {/* Floating background decorations */}
-      <div className="bg-floating-icon icon-4" style={{ top: '15%', left: '42%', opacity: 0.03 }}><i className="fa-solid fa-map-location-dot"></i></div>
-      <div className="bg-floating-icon icon-2" style={{ bottom: '15%', left: '8%', opacity: 0.03 }}><i className="fa-solid fa-envelope-open-text"></i></div>
+      <div className="bg-floating-icon icon-4" style={{ top: '15%', left: '42%', opacity: 0.03 }}><Icon name="map-location-dot" /></div>
+      <div className="bg-floating-icon icon-2" style={{ bottom: '15%', left: '8%', opacity: 0.03 }}><Icon name="envelope-open-text" /></div>
 
       <div className="container">
         <div className="section-header gsap-reveal">
-          <div className="section-eyebrow"><i className="fa-solid fa-map-location-dot"></i> {t('contact.eyebrow')}</div>
+          <div className="section-eyebrow"><Icon name="map-location-dot" /> {t('contact.eyebrow')}</div>
           <h2>{t('contact.title1')} <span className="highlight">{t('contact.title2')}</span></h2>
           <p>{t('contact.subtitle')}</p>
         </div>
@@ -44,7 +45,7 @@ export default function Contact() {
         <div className="contact-grid">
           <div className="contact-info-cards">
             <div className="contact-card glass-card gsap-reveal">
-              <div className="card-icon"><i className="fa-solid fa-location-dot"></i></div>
+              <div className="card-icon"><Icon name="location-dot" /></div>
               <div>
                 <h3>{t('contact.addressTitle')}</h3>
                 <p style={{ whiteSpace: 'pre-line' }}>
@@ -57,13 +58,13 @@ export default function Contact() {
                   className="maps-link"
                   onClick={() => trackEvent('maps_click', { event_category: 'Contact', event_label: 'Contact Section' })}
                 >
-                  <i className="fa-solid fa-map-location-dot"></i> {t('contact.mapsBtn')}
+                  <Icon name="map-location-dot" /> {t('contact.mapsBtn')}
                 </a>
               </div>
             </div>
             
             <div className="contact-card glass-card gsap-reveal">
-              <div className="card-icon"><i className="fa-solid fa-phone"></i></div>
+              <div className="card-icon"><Icon name="phone" /></div>
               <div>
                 <h3>{t('contact.phoneTitle')}</h3>
                 <p>{t('contact.phoneDesc')}</p>
@@ -81,7 +82,7 @@ export default function Contact() {
             </div>
             
             <div className="contact-card glass-card gsap-reveal">
-              <div className="card-icon"><i className="fa-solid fa-business-time"></i></div>
+              <div className="card-icon"><Icon name="business-time" /></div>
               <div>
                 <h3>{t('contact.hoursTitle')}</h3>
                 <p><strong>{t('contact.hoursSubtitle')}</strong></p>
