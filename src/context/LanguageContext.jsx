@@ -134,6 +134,7 @@ const translations = {
       },
       labelFee: "পরামর্শ ফি",
       feeVal: "কাউন্টারে যোগাযোগ করুন",
+      viewPoster: "পোস্টার দেখুন",
       btnBook: "হোয়াটসঅ্যাপে স্লট বুক করুন",
       badgeActive: "সক্রিয় শিডিউল"
     },
@@ -307,6 +308,7 @@ const translations = {
       },
       labelFee: "Consultation Fee",
       feeVal: "Contact Counter",
+      viewPoster: "View poster",
       btnBook: "Book Slot on WhatsApp",
       badgeActive: "Active Schedule"
     },

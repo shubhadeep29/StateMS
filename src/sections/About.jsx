@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import { useLanguage } from '../context/LanguageContext'
+import ResponsiveImage from '../components/ResponsiveImage'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -13,31 +14,25 @@ export default function About() {
 
   const galleryImages = [
     {
-      src: 'pharmacy_hero.png',
-      alt: 'M/S State Medicine Shop Storefront',
-      label: t('about.gallery.storeFront'),
-      badge: t('about.badges.storeFront')
-    },
-    {
-      src: 'shop_counter.png',
+      src: 'shop_counter',
       alt: 'Medicine Dispensation Counter',
       label: t('about.gallery.counter'),
       badge: t('about.badges.counter')
     },
     {
-      src: 'shop_shelves.png',
+      src: 'shop_shelves',
       alt: 'Authentic Medicine Inventory Shelves',
       label: t('about.gallery.inventory'),
       badge: t('about.badges.inventory')
     },
     {
-      src: 'waiting_area.png',
+      src: 'waiting_area',
       alt: 'OPD Clinic Patient Waiting Lounge',
       label: t('about.gallery.waiting'),
       badge: t('about.badges.waiting')
     },
     {
-      src: 'consultation_room.png',
+      src: 'consultation_room',
       alt: 'Doctor Consultation Chamber',
       label: t('about.gallery.chamber'),
       badge: t('about.badges.chamber')
@@ -71,10 +66,15 @@ export default function About() {
       <div className="container about-container">
         <div className="about-image-wrapper gsap-reveal" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <div style={{ position: 'relative', width: '100%' }}>
-            <img 
-              src={`${import.meta.env.BASE_URL}assets/${galleryImages[activeImageIndex].src}`} 
-              alt={galleryImages[activeImageIndex].alt} 
-              className="about-image" 
+            <ResponsiveImage
+              key={galleryImages[activeImageIndex].src}
+              name={galleryImages[activeImageIndex].src}
+              widths={[640, 1024]}
+              sizes="(max-width: 992px) 100vw, 560px"
+              width={1024}
+              height={416}
+              alt={galleryImages[activeImageIndex].alt}
+              className="about-image"
             />
             <div className="floating-card">
               <div className="expert-icon"><i className="fa-solid fa-camera"></i></div>

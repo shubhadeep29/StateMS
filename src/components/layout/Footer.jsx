@@ -1,5 +1,6 @@
 import { useLanguage } from '../../context/LanguageContext'
 import { trackEvent } from '../../utils/analytics'
+import ResponsiveImage from '../ResponsiveImage'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -24,9 +25,13 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-col brand-col">
           <a href="#" className="logo footer-logo" onClick={(e) => handleLinkClick(e, '#home')}>
-            <img 
-              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`} 
-              alt="M/S State Medicine Shop Logo" 
+            <ResponsiveImage
+              name="logo-mark"
+              widths={[64, 128]}
+              sizes="48px"
+              width={128}
+              height={128}
+              alt="M/S State Medicine Shop Logo"
               className="footer-logo-img"
             />
             <div className="logo-text">

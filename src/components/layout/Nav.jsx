@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import ResponsiveImage from '../ResponsiveImage'
 
 export default function Nav() {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
@@ -121,8 +122,13 @@ export default function Nav() {
           }}
         >
           <a href="#" className="logo" id="logoLink" onClick={(e) => handleLinkClick(e, '#home')}>
-            <img
-              src={`${import.meta.env.BASE_URL}assets/pharmacy_logo.png`}
+            <ResponsiveImage
+              name="logo-mark"
+              widths={[64, 128]}
+              sizes="48px"
+              width={128}
+              height={128}
+              priority
               alt="M/S State Medicine Shop Logo"
               className="logo-img"
             />

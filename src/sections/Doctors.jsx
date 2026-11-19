@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { assetUrl } from '../components/ResponsiveImage'
 
 export default function Doctors() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -61,7 +62,7 @@ export default function Doctors() {
         : "Contact for details",
       fee: t('doctors.feeVal'),
       category: "orthopedics",
-      bannerImage: "/assets/dr_kabir_banner.jpeg"
+      posterUrl: assetUrl('dr_kabir_banner', 1600)
     }
   ]
 
@@ -119,22 +120,21 @@ export default function Doctors() {
               const whatsappLink = `https://wa.me/917501482099?text=${encodeURIComponent(bookingMsg)}`
 
               return (
-                <div key={index} className={`doctor-card glass-card ${doc.bannerImage ? 'doctor-banner-card' : ''}`}>
-                  {doc.bannerImage ? (
-                    <div className="doc-banner-container" style={{ width: '100%', marginBottom: '15px', borderRadius: '12px', overflow: 'hidden', border: '2px solid rgba(255, 255, 255, 0.5)' }}>
-                      <img src={doc.bannerImage} alt={`Banner for ${doc.name}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <div key={index} className="doctor-card glass-card">
+                  <div className="doc-info-header">
+                    <div className="doc-avatar-large">
+                      <i className="fa-solid fa-user-doctor"></i>
                     </div>
-                  ) : (
-                    <div className="doc-info-header">
-                      <div className="doc-avatar-large">
-                        <i className="fa-solid fa-user-doctor"></i>
-                      </div>
-                      <div className="doc-meta">
-                        <h3>{doc.name}</h3>
-                        <span className="doc-qual">{doc.qualification}</span>
-                      </div>
+                    <div className="doc-meta">
+                      <h3>{doc.name}</h3>
+                      <span className="doc-qual">{doc.qualification}</span>
+                      {doc.posterUrl && (
+                        <a href={doc.posterUrl} target="_blank" rel="noopener noreferrer" className="doc-poster-link">
+                          {t('doctors.viewPoster')}
+                        </a>
+                      )}
                     </div>
-                  )}
+                  </div>
                   <div className="doc-details-list">
                     <div className="doc-detail-item">
                       <i className="fa-solid fa-stethoscope"></i>

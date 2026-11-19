@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import ResponsiveImage from '../components/ResponsiveImage'
 
 export default function Hero() {
   const { t } = useLanguage()
 
   const heroImages = [
-    `${import.meta.env.BASE_URL}assets/pharmacy_hero.png`,
-    '/assets/dr_kabir_banner.jpeg'
+    { name: 'pharmacy_hero', widths: [640, 1024], width: 1024, height: 416, fit: 'cover' },
+    { name: 'dr_kabir_banner', widths: [800, 1600], width: 1600, height: 959, fit: 'contain' },
   ]
   const [currentImgIndex, setCurrentImgIndex] = useState(0)
 
@@ -83,20 +84,25 @@ export default function Hero() {
         <div className="hero-image-wrapper">
           <div className="hero-image-glow"></div>
           <div className="hero-slider" style={{ display: 'grid', alignItems: 'center', justifyItems: 'center' }}>
-            {heroImages.map((src, idx) => (
-              <img
-                key={src}
-                src={src}
+            {heroImages.map((img, idx) => (
+              <ResponsiveImage
+                key={img.name}
+                name={img.name}
+                widths={img.widths}
+                sizes="(max-width: 992px) 100vw, 560px"
+                width={img.width}
+                height={img.height}
+                priority={idx === 0}
                 alt="State Medicine Shop"
                 className="hero-image"
-                id={idx === 0 ? "heroImage" : undefined}
+                id={idx === 0 ? 'heroImage' : undefined}
                 style={{
                   gridArea: '1 / 1',
                   opacity: idx === currentImgIndex ? 1 : 0,
                   transition: 'opacity 0.8s ease-in-out',
                   width: '100%',
-                  height: idx === 0 ? '100%' : 'auto',
-                  objectFit: idx === 0 ? 'cover' : 'contain',
+                  height: img.fit === 'cover' ? '100%' : 'auto',
+                  objectFit: img.fit,
                   backgroundColor: 'transparent'
                 }}
               />
