@@ -68,6 +68,20 @@ export default function Doctors() {
       category: "gynae"
     },
     {
+      name: "Dr. Anwesha Chakraborty",
+      qualification: language === 'bn'
+        ? "এমবিবিএস, এমএস (নীলরতন সরকার মেডিক্যাল কলেজ, কলকাতা), MRCOG-1 (লন্ডন), (অনার্স) (প্রসূতিবিদ্যা), রায়গঞ্জ গভঃ মেডিক্যাল কলেজ ও হাসপাতাল, রেজিঃ নং- ৮৭৬৬৬"
+        : "MBBS, MS (NRS Medical College, Kol.), MRCOG-1 (LONDON), (Hons.) (Obgy), Raiganj Govt. Medical College & Hospital, Reg. No: 87666",
+      specialty: language === 'bn'
+        ? "পরামর্শদাতা চিকিৎসক, স্ত্রীরোগ ও প্রসূতিবিদ্যায় বিশেষজ্ঞ"
+        : "Consultant Gynecologist & Obstetrician",
+      schedule: language === 'bn'
+        ? "বিস্তারিত জানতে যোগাযোগ করুন"
+        : "Contact for details",
+      fee: t('doctors.feeVal'),
+      category: "gynae"
+    },
+    {
       name: "Dr. M.D. F. Kabir",
       qualification: language === 'bn'
         ? "এম.বি.বি.এস (ডাব্লুবিইউএইচএস), এম.এস (অর্থপেডিক্স), রেজি নং-৭৩৯৭৭"
@@ -135,7 +149,7 @@ export default function Doctors() {
                 <div
                   key={doc.name}
                   className="doctor-card glass-card"
-                  style={{ viewTransitionName: `doc-${doc.category}` }}
+                  style={{ viewTransitionName: `doc-${doc.name.replace(/[^a-zA-Z0-9]/g, '')}` }}
                 >
                   <div className="doc-info-header">
                     <div className="doc-avatar-large">
@@ -144,27 +158,19 @@ export default function Doctors() {
                     <div className="doc-meta">
                       <h3>{doc.name}</h3>
                       <span className="doc-qual">{doc.qualification}</span>
+                      {doc.posterUrl && (
+                        <a
+                          href={doc.posterUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="doc-poster-badge"
+                          aria-label={`${t('doctors.viewPoster')}: ${doc.name}`}
+                        >
+                          <Icon name="image-regular" /> {t('doctors.viewPoster')}
+                        </a>
+                      )}
                     </div>
                   </div>
-                  {doc.posterUrl && (
-                    <a
-                      href={doc.posterUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="doc-poster-thumb"
-                      aria-label={`${t('doctors.viewPoster')}: ${doc.name}`}
-                    >
-                      <ResponsiveImage
-                        name="dr_kabir_banner"
-                        widths={[800]}
-                        sizes="(max-width: 768px) 90vw, 360px"
-                        width={800}
-                        height={480}
-                        alt={`Poster for ${doc.name}`}
-                      />
-                      <span className="doc-poster-caption">{t('doctors.viewPoster')}</span>
-                    </a>
-                  )}
                   <div className="doc-details-list">
                     <div className="doc-detail-item">
                       <Icon name="stethoscope" />
@@ -188,6 +194,87 @@ export default function Doctors() {
                 </div>
               )
             })}
+          </div>
+        </div>
+
+        {/* Dedicated Spotlight Section for Dr. M.D. F. Kabir */}
+        <div id="dr-kabir-spotlight" className="doctor-spotlight-section reveal">
+          <div className="spotlight-card glass-card">
+            <div className="spotlight-poster-wrapper">
+              <a
+                href={assetUrl('dr_kabir_banner', 1600)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="spotlight-poster-link"
+                aria-label={language === 'bn' ? 'ডাঃ কবিরের চেম্বার পোস্টার বড় করে দেখুন' : "View Dr. Kabir's visiting poster in full size"}
+              >
+                <ResponsiveImage
+                  name="dr_kabir_banner"
+                  widths={[800, 1600]}
+                  sizes="(max-width: 992px) 92vw, 560px"
+                  width={1600}
+                  height={959}
+                  alt="Dr. M.D. F. Kabir Orthopedic Specialist Visiting Banner"
+                  className="spotlight-poster-img"
+                />
+                <span className="spotlight-poster-zoom">
+                  <Icon name="image-regular" /> {t('doctors.viewPoster')}
+                </span>
+              </a>
+            </div>
+
+            <div className="spotlight-info">
+              <div className="spotlight-eyebrow">
+                <Icon name="notes-medical" />
+                <span>{language === 'bn' ? 'বিশেষ ওপিডি স্পটলাইট' : 'Featured Specialist Spotlight'}</span>
+              </div>
+              <h3>{language === 'bn' ? 'ডাঃ এম.ডি. এফ. কবির' : 'Dr. M.D. F. Kabir'}</h3>
+              <p className="spotlight-qual">
+                {language === 'bn'
+                  ? 'এম.বি.বি.এস (ডাব্লুবিইউএইচএস), এম.এস (অর্থপেডিক্স) | রেজি নং- ৭৩৯৭৭'
+                  : 'MBBS (WBUHS), MS (Orthopedics) | Reg No: 73977'}
+              </p>
+              <p className="spotlight-desc">
+                {language === 'bn'
+                  ? 'হাড়ের ব্যথা, বাত, জয়েন্টের সমস্যা, স্পন্ডিলোসিস ও ফ্র্যাকচারের বিশেষজ্ঞ চিকিৎসার জন্য কালিয়াগঞ্জেই পরামর্শ নিন অভিজ্ঞ অর্থপেডিক বিশেষজ্ঞের।'
+                  : 'Specialized clinical consultation for bone & joint pains, arthritis, spondylosis, fractures, and musculoskeletal care in Kaliyaganj.'}
+              </p>
+
+              <div className="spotlight-highlights">
+                <span className="spotlight-tag">
+                  <Icon name="stethoscope" /> {language === 'bn' ? 'অস্থি ও জয়েন্ট বিশেষজ্ঞ' : 'Bone & Joint Specialist'}
+                </span>
+                <span className="spotlight-tag">
+                  <Icon name="circle-check-regular" /> {language === 'bn' ? 'রেজিস্টার্ড বিশেষজ্ঞ' : 'Registered Specialist'}
+                </span>
+                <span className="spotlight-tag">
+                  <Icon name="calendar-check-regular" /> {language === 'bn' ? 'ভিজিটিং চেম্বার শিডিউল' : 'Visiting OPD Clinic'}
+                </span>
+              </div>
+
+              <div className="spotlight-actions">
+                <a
+                  href={`https://wa.me/917501482099?text=${encodeURIComponent(
+                    language === 'bn'
+                      ? 'হ্যালো এম/এস স্টেট মেডিসিন শপ, আমি ডাঃ এম.ডি. এফ. কবির (অর্থপেডিক্স)-এর চেম্বারে দেখানোর জন্য একটি বুকিং স্লট পেতে চাই। অনুগ্রহ করে পরবর্তী উপলব্ধ তারিখ ও সময় জানান।'
+                      : 'Hello M/S State Medicine Shop, I would like to book a clinic consultation slot for Dr. M.D. F. Kabir (Orthopedics). Please inform me about the next available timing.'
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <Icon name="whatsapp" /> {language === 'bn' ? 'অ্যাপয়েন্টমেন্ট বুক করুন' : "Book Appointment"}
+                </a>
+                <a
+                  href={assetUrl('dr_kabir_banner', 1600)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  <Icon name="image-regular" /> {t('doctors.viewPoster')}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
